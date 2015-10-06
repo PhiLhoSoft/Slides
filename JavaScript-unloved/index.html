@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>JavaScript: an unloved language</title>
+
+		<meta name="description" content="A presentation of the JavaScript language">
+		<meta name="author" content="Philippe Lhoste">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../_Reveal/css/reveal.css">
+		<link rel="stylesheet" href="../_Reveal-PLS/sky.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../_Reveal-PLS/github.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="../_Reveal/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../_Reveal/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+<section data-markdown><script type="text/template">
+# JavaScript:<br/>an unloved<br/>language
+</script></section>
+
+				<section>
+
+<section data-markdown><script type="text/template">
+## History
+
+Created in 1995 by Brendan Eich working at Netscape, at the time leader of innovation in the browser domain.
+
+Made for small scripts to run in the browser, like form validation or on click action.
+
+Should have been named LiveScript but popularity of the rising Java led to JavaScript (two capitals!) for marketing purpose.
+
+That, and superficial similarity with Java syntax lead to confusion where people think that one is an abbreviation of the other!
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Presentation
+
+Normalised as ECMAScript, ECMA-262.
+
+Syntax is similar to Java (C-like), but semantic (functions) is close of Lisp / Scheme, prototypal inheritance comes from Self and regular expressions from Perl.
+
+Dynamically and weakly typed. Type of variables isn't declared and we can assign them values of varying type.
+
+Object-oriented but not based on classes, based on prototypes.
+
+Functions are first-class citizens.
+
+Not limited to the browser: Java has a built-in interpreter, Node.js is a server-side Web framework, etc.
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Why no love?
+
+Mostly from users coming from Java or C#, not using idiosyncrasies of JS.
+
+![JavaScript: the Good Parts vs. JavaScript: the Definitive Guide](JS-TheGoodParts.jpg "JavaScript: the Good Parts vs. JavaScript: the Definitive Guide")
+
+Douglas Crockford, author of _JavaScript: the Good Parts_, an excellent book (inspiration for these slides) calls JavaScript "_the world's most misunderstood programming language_".
+</script></section>
+
+<section data-markdown><script type="text/template">
+### No love, because...
+
+Dynamic typing implies runtime errors instead of compilation errors. And poor tooling.
+
+No classes, prototype inheritance not known nor understood.
+
+Language has weaknesses, pitfalls and dark sides.
+
+<br/>
+##### Things of the past
+
+Browser implementations were unequal, and inconsistent.
+
+JavaScript speed was awful. It is much improved now.
+</script></section>
+
+				</section>
+
+				<section>
+
+<section data-markdown><script type="text/template">
+## Types
+
+Variables are not typed, values are (but can have implicit conversions).
+
+Numbers are 64-bit floating point values. No true integers.
+
+Strings are made of 16-bit Unicode characters. No char type. Delimited by `"` or `'`. `\` escape, `\uHHHH` notation. Immutables. Concatenation with `+`, comparison with `==`.
+
+Boolean type but lot of values are implicitly `false` (`0`, `""`, `null`, `undefined`, `NaN`), all others are `true`.
+
+`null` and `undefined` are types with only one possible value.
+
+Objects are everything else...
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Statements
+
+Variables can be used without being declared and are then global!
+
+The `var` statement defines a private variable whose scope is the current function.
+
+The soft braces `{ }` don't define a scope!
+
+Classical conditional, looping and disruptive statements (`break`, `continue`, `return`, throwing exceptions).
+</script></section>
+
+<section data-markdown><script type="text/template">
+### break and continue
+
+They allow to exit of the loop where they are used. (`break` is also used in the `switch` statement.)<br/>
+Both can take an optional label.
+</script></section>
+
+<section data-markdown><script type="text/template">
+### return
+
+If not explicit, a function returns `undefined`. If a function is invoked as a constructor, the implicit return value is `this`, the constructed object.
+
+Beware: JavaScript attempts to infer semi-colons from end-of-line, so
+
+    return
+    {
+      value: 5
+    };
+
+is seen by JS as a single `return` statement (returning `undefined`) followed by an object declaration!
+
+Here, you have to write:
+
+    return {
+      value: 5
+    };
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Exceptions
+
+Can be thrown and caught. Can be any object.
+
+    if (bad) throw { errorCode: 405, message: "You goofed!" }
+    try
+    {
+      canThrow();
+    }
+    catch (e)
+    {
+      alert("Oops: " + e);
+    }
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Expressions
+
+An expression statement can assign a value to one or more variables, can call a function or can delete a property from an object.
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Operators
+
+JavaScript has the classical Java operators, including bitwise ones (coercing numbers to integers).
+
+The `typeof` operator produces a string: one of 'number', 'string', 'boolean', 'undefined', 'function' and 'object'.
+
+Invocation `()` executes a function, optionally with parameters.
+
+Refinement `[]` specifies a property or element of an object or array.
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Coercion
+
+JavaScript goes out of its way to force a value to be of the desired type. If you want a boolean, it can convert strings or numbers to `true` or `false`. `"5"` can be treated as `5` automatically, and so on.
+
+So a conditional like `a == b` can lead to surprises. That's why most programmers only use the `===` operator which always return `false` when each side is of different type. `"5" == 5` is `true`, but `"5" === 5` is `false`.
+</script></section>
+
+				</section>
+
+				<section>
+
+<section data-markdown><script type="text/template">
+## Objects
+
+`Object` is the only mutable type. Objects are keyed collections, containers of properties, ie. name and value pairs.
+
+Arrays, functions and regular expressions are objects.
+
+A property name can be any string.
+A property value can be any value, except `undefined`.
+
+So called global variables are actually properties of the global object, named `window` in a browser.
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Object literals
+
+An object literal is made of curly braces around a comma-separated list of name-value pairs (pair separated by a colon).
+
+    var empty = {}
+    var somebody = { "given name": "Arthur", name: "Rambo", age: 27,
+      'skin color': { r: 102, g: 55, b: 27 } };
+
+Quotes around the name can be omitted if the name is a valid identifier (not a keyword).
+
+A value can be another object literal, literal declarations can be nested.
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Retrieval
+
+To get the value of a property, use the notation `o.propertyName` if the name is a legal identifier, or `o['property name']` in all cases.
+
+Return value is `undefined` if the name is unknown. Retrieving a value from `undefined` throws a TypeError exception.
+
+    // Get value with default
+    var speed = ennemy.speed || 0;
+    // Guard against TypeError
+    var posX = enemy.coordinates && enemy.coordinates.x;
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Update
+
+Just assign the value. If the property doesn't exist, it is created.
+
+Objects are passed around by reference, not by copy.
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Prototype
+
+Every object is linked to a prototype object from which it inherits properties. By default they inherit from `Object.prototype`, built in JavaScript.
+When we try to retrieve a property value from an object and it is not found, JavaScript looks in the prototype object. It goes up in the chain until it finds the property, up to `Object.prototype`. If not found, the result is undefined. That's delegation.
+
+A new property in a prototype is immediately visible in all objects based on that prototype.
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Reflection
+
+`typeof`  operator allows to find out the type of a property.
+
+`hasOwnProperty` method tells if a property is defined in the object itself or is inherited.
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Enumeration and deletion
+
+`for in` loop enumerates properties from the whole inheritance chain.
+
+`delete` allows to remove a property from an object:<br/>
+`delete foo.obsolete;`
+</script></section>
+
+				</section>
+
+				<section>
+
+<section data-markdown><script type="text/template">
+## Functions
+
+Functions are objects, inheriting from the `Function` prototype, itself linked to the `Object` prototype.
+
+They can be stored in variables, arrays and object properties, passed as parameters or returned from functions.
+
+They can have properties and methods. That's actually a way to create objects with private members.
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Literal
+
+    var a = function (x, y)  // Anonymous function
+    {
+      return x * y;
+    }
+    var r = function recursive(z)
+    {
+      if (z < 2) return 1;
+      return z * recursive(z - 1);
+    }
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Closure
+
+A function created inside another can access the variables and parameters of the parent function.
+
+It has a link to that outer context.
+
+That's a _closure_.
+
+The closure, function linked to a context, can survive the outer function.
+
+    function giveF(a) // a is fixed when giveF() is called
+    {
+      var x = Date.now(); // x is frozen at the time of call of giveF()
+      return function (z)
+      {
+        return z + ' ' + a + ' ' + x;
+      }
+    }
+    var f = giveF(5);
+    // giveF() is finished, but its parameters a and x still live in f
+    ShowResult(f(7)); // => 7 5 1401402052818
+    ShowResult(f(17)); // => 17 5 1401402052818
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Invocation
+
+A function is invoked by passing values to its parameters, if any.
+
+    <expression with a function value>(...)
+
+It also has two additional implicit parameters: `this` and `arguments`.
+
+If there are less parameters in the invocation than in the declaration, the last parameters get the `undefined` value.
+
+If there are more parameters, extra parameters are ignored but are present in the `arguments` (pseudo-)array. This allows to make functions with variable number of arguments.
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Invocation patterns
+
+JavaScript has four patterns to invoke functions. They change the value of `this` in the function.
+</script></section>
+
+<section data-markdown><script type="text/template">
+#### Method invocation pattern
+
+When the property of an object has a function value, it is a method of that object.
+
+When this method is called, `this` in this method is bound to the object.
+
+Functions that get their object context from `this` are called _public methods_.
+</script></section>
+
+<section data-markdown><script type="text/template">
+#### Function invocation pattern
+
+When a function is not the property of an object, it is invoked as a function. `this` is bound to the global object.
+
+Thus, if a method declares an inner function, that inner function cannot access the `this` of the enclosing function, ie. the context of the enclosing object.
+
+A workaround is to assign the enclosing function's `this` to a variable (traditionally called `that`). Thus the inner function can access it as a closure.
+
+    var o = {
+      data: { x: 10, y: 20 },
+      outer: function ()
+      {
+        var that = this;
+        doStuff('foo', function (result) { display(that.data.x * result.factor); });
+      }
+    }
+</script></section>
+
+<section data-markdown><script type="text/template">
+#### Constructor invocation pattern
+
+If a function is invoked with the `new` prefix, a new object is created.
+
+The object is linked to the function's prototype, and `this` is bound to the new object.
+
+General convention is to capitalize the name of these functions, to make them to look like classes.
+
+This style of function is actually rarely used.
+</script></section>
+
+<section data-markdown><script type="text/template">
+#### Apply invocation pattern
+
+The `apply` method takes two parameters: the object to bind to `this`, and an array of parameters.
+
+    var r = someMethod.apply(someObject, [p1, p2]);
+
+Example:
+
+    var bla = function (x, y)
+    {
+      alert(this.a + x + y);
+    }
+    bla.apply({ a: "msg - " }, [ 'this is x', ' and y' ]); // => Show "msg - this is x and y"
+</script></section>
+
+				</section>
+
+				<section>
+
+<section data-markdown><script type="text/template">
+## Arrays
+
+In JavaScript, arrays are not classical arrays, ie. memory chunks that can be addressed by an index.
+
+They are actually associative arrays, where numerical indexes are still properties.
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Literal
+
+    var a = [ 'a', 'b', 'c' ];
+
+is equivalent to the declaration:
+
+    var a = { '0': 'a', '1': 'b', '2': 'c' };
+
+but actually the array inherits from `Array.prototype` and so has useful methods and the special `length` property.
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Dynamic
+
+We can put values of different types in an array:
+
+    var a = [ 'a', true, { 'o': 42 }, [ 5 ] ];
+
+Arrays are dynamic: if we assign a value to a non-existing index, the length of the array is adjusted to this index.
+
+    var a = [];
+    a[5] = 'k'; // a.length == 6
+    a[a.length] = 'new'; // Append to end
+    a.push('another'); // Idem
+
+If we assign a value to `length` smaller than its current value, the array is truncated, excess values are deleted.
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Deletion
+
+    delete a[5];
+
+assigns `undefined` to the 6th entry of the array.
+
+    a.splice(5, 1);
+
+removes 1 entry of the array at position 5, shifting down the other entries.
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Tidbits
+
+Arrays can hold other arrays, that's the way to make multi-dimension arrays.
+
+Avoid to use `for in` iteration over arrays: the order is not guaranted!
+
+Do not mix arrays (mostly used with small integer indices) and objects (used as associative arrays, aka. hash maps).
+
+You can add methods to arrays.
+</script></section>
+
+				</section>
+
+				<section>
+
+<section data-markdown><script type="text/template">
+## Regular expressions
+
+JavaScript has a native support for Perl-like regular expressions, with a literal annotation:
+
+    // Testing for a match
+    var idMatcher = /^[a-z_]\w*$/i;
+    var ok = idMatcher.test("FooBar"); // => true
+
+    // Applying a regexp, with captures, resulting in an array
+    var propMatcher = /^(\w+)\s*=\s*(.+)$/;
+    var pair = propMatcher.exec("alpha = beta"); // => [ 'alpha = beta', 'alpha', 'beta' ]
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Construction
+
+Either via the literal (expression between slashes optionally followed by modifiers) or via the RegExp constructor.
+
+    var propMatcher = new RegExp("^(\\w+)\\s*=\\s*(.+)$"); // Must double \
+
+Modifiers are:
+
+- i = case insensitive
+- g = global, can match several times
+- m = multiline: ^ and $ can match line-ending characters.
+</script></section>
+
+				</section>
+
+				<section>
+
+<section data-markdown><script type="text/template">
+## Idioms
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Augmenting types
+
+JavaScript allows to add methods and properties to an existing type, even built-in like String or Array.
+
+To use with care, because of potential conflicts between libraries.
+
+    String.prototype.doubler = function () { var v = this; return v.concat(v); }
+    var yoyo = 'yo'.doubler();
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Recursion
+
+JavaScript allows recursion but doesn't has tail recursion optimization,
+when the function returns the result of invoking itself.
+
+So, beware of stack size!
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Scope
+
+As seen, JavaScript have function scope, and a variable can be used before being declared.
+
+As a convention, to avoid confusion, general practice is to declare all variables at the top of a function.
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Module
+
+JavaScript doesn't have private visibility, but variables defined in a function are not visible from outside. Using closures, we can expose accessors, not the variables themselves.
+
+    var person = function (n, a)
+    {
+      var name = n, age = a;
+      return {
+        setAge: function (a) { age = a; },
+        setName: function (n) { name = n; },
+        getAge: function () { return age; },
+        getName: function () { return name; }
+      }
+    }
+    var p = person("James", 31);
+    alert(p.getName() + ", " + p.getAge()); // Cannot access p.name
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Cascade
+
+An idiom practiced in many languages (some support it naturally) is to chain calls on an object.
+
+    stuff.normalize().sort().filter(predicate);
+
+In JS, the trick is to make each method to return `this` instead of `undefined`, even for setters.
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Object specifier
+
+JavaScript doesn't have named parameters but we can pass an object as parameter instead of lot of unamed parameters:
+
+    var newObject = builder({ x: 5, y: 11, r: 3.14 });
+
+Meaning is more explicit, order is not important and default values can be handled.
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Curry
+
+Currying allows to to produce a new function by combining a partial function and a value.
+
+It is a common idiom in functional programming. Example:
+
+    var prefixer = function (prefix)
+    {
+      return function (name)
+      {
+        return prefix + name;
+      }
+    }
+
+    var httpPrefixer = prefixer('http://');
+    httpPrefixer("google.com"); // => http://google.com
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Memoization
+
+Another idiom from the functional programming realm.
+
+Here, a function can store in a cache the previous results it produced. Thus, when it is called with parameters it already processed, it just returns the previous result.
+
+For example a function producing Fibonacci numbers can use previous results to avoid computing the series from 1 each time.
+</script></section>
+
+				</section>
+
+				<section>
+
+<section data-markdown><script type="text/template">
+## JavaScript memory leaks
+
+JS is a garbage collected language, creating objects, keeping track of them, and removing them when they are no longer referenced.
+
+But circular references can make some objects to be never released in some browser, particularly those using reference counting to handle memory for DOM objects.
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Circular reference
+
+    var elt;
+    window.onload = function()
+    {
+      elt = document.getElementById("SomeElement");
+      // Search again, add a new property to this element
+      document.getElementById("SomeElement").newProperty = elt
+      elt.lotOfMemory = new Array(1000).join(new Array(100).join("X--X"));
+    };
+
+`elt` has a reference on the `SomeElement` Dom object, which in turn has a reference to this object, via the `newProperty`.
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Another circular reference
+
+    // Object constructor
+    function AddProperty(element)
+    {
+      this.elementReference = element;
+      // Creates a circular reference here by Dom -> JS -> Dom references
+      element.newProperty = this;
+    }
+    function doLeak()
+    {
+      // Leak
+      return new AddProperty(document.getElementById("SomeElement"));
+    }
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Circular reference with closure
+
+    window.onload = function outer()
+    {
+      var elt = document.getElementById("SomeElement");
+      elt.onclick = function inner()
+      {
+        alert("You are creating a memory leak!");
+      };
+      // Show leak can be significant!
+      elt.lotOfMemory = new Array(1000).join(new Array(100).join("X--X"));
+    };
+
+Common pitfall when handling events in JS.
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Avoiding memory leaks
+
+- Add a way to set the big object to `null` after usage, thus cutting the circular reference.
+- Wrap the object declaration in a closure.
+
+      window.onload = function outer()
+      {
+        var inner = function () { alert("You avoided the leak"); };
+        (function ()
+        {
+          // elt will be collectable at the end of the scope generated by the function
+          var elt =  document.getElementById("SomeElement");
+          elt.onclick = doAction;
+        })(); // Immediate call
+      };
+
+- Or avoid making a closure.
+
+      window.onload = function ()
+      {
+        var elt = document.getElementById("SomeElement");
+        elt.onclick = doesNotLeak;
+      }
+      function doesNotLeak() { alert("No leak at all"); }
+</script></section>
+
+				</section>
+
+				<section>
+
+<section data-markdown><script type="text/template">
+## The JavaScript ecosystem
+
+JavaScript is mostly used in browsers, which offer an interesting (portable and graphically rich) platform for developping applications with user interface.
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Libraries
+
+Lot of libraries and frameworks have been developped in JavaScript. Some of them were initially designed to address the browser quirks and differences. Lot of them exploit the new HTML 5 features, providing rich user experience in the browser.
+
+#### jQuery
+
+jQuery is a all-purpose library with a plugin feature that generated a flurry of varied extensions. It became rather pervasive in Web development, despite having concurrents like Prototype or ExtJS.
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Other languages
+
+A current trend in programming languages is to make compilers to produce JavaScript code instead of native code, C code or byte code (JVM or CLR).
+
+This allows them to improve their portability, from desktop to mobile phones, and to ease their deployment.
+
+This goes from CoffeeScript (inspired by Ruby and Python) to Dart (specifically designed for this purpose), including Java (GWT), Ceylon and Microsoft's TypeScript.
+
+The main purpose is to hide the JS quirks and, often, to offer a static type system to the programmers, with better tools.
+</script></section>
+
+				</section>
+
+<section data-markdown><script type="text/template">
+## Conclusion
+
+Despite its quirks, JavaScript is one of the most used programming language.
+
+One reason is that it is easy to use for simple code (but it is easy to write bad code!).
+
+But the main reason is that it is pervasive and unavoidable: it is the only language available in nearly all Web browsers.
+
+So anybody have a JavaScript interpreter at hand and it is the mandatory gate to write code in a Web browser.
+
+That's why so many languages "compile" ("transpile" or "transcompile", actually) to JavaScript code.
+
+The language has issues, but if coders restrict themselves to a strict subset of the language, using some coding discipline, JS is a pleasant language to code in.
+</script></section>
+
+				<section>
+					<h1>That's All Folk!</h1>
+					<h3>by Philippe Lhoste</h3>
+				</section>
+
+				<section>
+<section data-markdown><script type="text/template">
+Author: Philippe Lhoste &lt;PhiLho(a)GMX.net&gt; http://Phi.Lho.free.fr
+
+Copyright (c) 2014 Philippe Lhoste / PhiLhoSoft
+</script></section>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="../_Reveal/lib/js/head.min.js"></script>
+		<script src="../_Reveal/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				width: 1000,
+				height: 730,
+
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '../_Reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../_Reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../_Reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../_Reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../_Reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../_Reveal-PLS/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../_Reveal-PLS/javascript.js', async: true },
+					{ src: '../_Reveal-PLS/json.js', async: true },
+					{ src: '../_Reveal-PLS/xml.js', async: true },
+					{ src: '../_Reveal-PLS/css.js', async: true },
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
