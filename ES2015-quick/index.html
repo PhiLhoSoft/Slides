@@ -120,6 +120,18 @@ The list, and lot of the content, comes from the good overview, [Babel's Learn E
 
 				</section>
 
+				</section>
+
+<section data-markdown><script type="text/template">
+## Let & Const
+
+`var` in JavaScript is hoisted (can use before declaration) and has function scope.<br>
+`let` is block-scoped, doesn't allow re-declaration and is not hoisted.<br>
+`const` is same as `let` but cannot be re-assigned.
+</script></section>
+
+				</section>
+
 				<section>
 
 <section data-markdown><script type="text/template">
@@ -152,10 +164,128 @@ var foo = (a, n) => { var r = ''; for (var i = 0; i < n; i++) { r += 'a'; }; ret
 
 				</section>
 
+				</section>
+
+<section data-markdown><script type="text/template">
+## Template Strings
+
+```
+var s = 'string', p = n => n !== 1 ? 's' : '';
+var msg = `Multiline
+${s}${p(5)}
+are (at least!) possible.`
+```
+</script></section>
+
+				</section>
+
+				</section>
+
+<section data-markdown><script type="text/template">
+## Enhanced Object Literals
+
+```
+var aProtoObject = {},
+	handler = x => x,
+	value = 42;
+var o =
+{
+  // define prototype of this object
+  __proto__: aProtoObject,
+  // same as handler: handler
+  handler,
+  // method
+  toString() { return 'o & '  + super.toString(); },
+  // dynamic property name
+  [ `prefix_${value}` ]: value
+};
+```
+</script></section>
+
+				</section>
+
+				</section>
+
+<section data-markdown><script type="text/template">
+## Destructuring
+
+Binding using pattern matching, supporting arrays and objects. Fail-soft: produce `undefined` if not matching.
+
+```
+// list matching
+var [ a, b ] = [ 42, 'foo', 'lost' ];
+// a === 42, b === 'foo'
+
+// defaults
+var [ c, d = 5, e ] = [ 'alone' ];
+// c === 'alone', d === 5, e === undefined
+
+// object matching
+var { first: aa, levels: { two: bb } } =
+	{ first: 77, levels: { two: 'deep' , too: 'ignore' } };
+// aa === 77, bb = 'deep'
+
+// in parameters
+function f({ name: n }) { return `name is ${n}`; }
+f({ name: 'Walter' });
+```
+</script></section>
+
+				</section>
+
+				</section>
+
+<section data-markdown><script type="text/template">
+## Default, Rest, Spread
+
+Default values for parameters;<br>
+variable number of arguments to real array (unlike `arguments`);<br>
+call with an array, fill parameters.
+
+```
+function f(x, y = 55) { return x + y; }
+f(11); // gives 66
+
+function g(x, ...y) { return x * 100 + y.length; }
+g(4, "one", true, {}); // gives 403
+
+function h(x, y, z) { return x * 100 + y * 10 + z; }
+h(...[ 3, 2, 1 ]); // gives 321
+```
+</script></section>
+
+				</section>
+
+				<section>
+
+<section data-markdown><script type="text/template">
+## Unicode; New Literals
+
+ES5 only supported the base plane, ie. 16-bit characters, seeing 21-bit chars as two chars.<br>
+ES6 brings full support for the "astral" plane, in regular expressions and with new functions, while keeping the old behavior.
+
+New literal: `\u{20BB7} === '𠮷'`
+
+Binary and octal literals: `0b111110111 === 503 === 0o767`
+</script></section>
+
+				</section>
+
+				<section>
+
+<section data-markdown><script type="text/template">
+</script></section>
+
+				</section>
+
 <section data-markdown><script type="text/template">
 ## Conclusion
 
-Blabla
+ES2015 brings lot of new syntax and features, which makes lot of things to implement, but browser implementers adopted it massively and work hard to complete the full feature set. The fact that most modern browsers auto-update regularly will allow to spread its usage quickly.
+
+Meanwhile, transpilers allows developers to adopt it early and indeed lot of projects already use it.
+
+And ES7 (and even ES8!) is already in progress...
 </script></section>
 
 				<section>
