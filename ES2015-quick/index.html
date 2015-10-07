@@ -72,7 +72,7 @@ Lot of developers adopt it too, using transpilers like Babel or Google Traceur, 
 <section data-markdown><script type="text/template">
 ## What is new?
 
-<div style="display: table; border-spacing: 32px; border-collapse: separate;">
+<div style="display: table; width: 120%;">
 <div style="display: table-cell;">
 <ul>
 <li>Arrows and Lexical This
@@ -123,8 +123,31 @@ The list, and lot of the content, comes from the good overview, [Babel's Learn E
 				<section>
 
 <section data-markdown><script type="text/template">
-## Xx
+## Arrows<br>and Lexical This
 
+Shortcut notation to define functions in a terse way.
+
+Functions defined this way in an object literal can access the object's properties.
+</script></section>
+
+<section data-markdown><script type="text/template">
+### Before
+
+```
+var foo = function (a, n) { var r = ''; for (var i = 0; i < n; i++) { r += 'a'; }; return a; };
+[ 1, 2 ].map(function (x) { return x * 2; }); // gives [ 2, 3 ]
+```
+</script></section>
+
+<section data-markdown><script type="text/template">
+## After
+
+```
+// Not much improvement for complex functions
+var foo = (a, n) => { var r = ''; for (var i = 0; i < n; i++) { r += 'a'; }; return a; };
+// Shine for one parameter (no parentheses) and if returns directly an expression
+[ 1, 2 ].map(x => x * 2); // gives [ 2, 3 ]
+```
 </script></section>
 
 				</section>
@@ -159,8 +182,8 @@ Copyright (c) 2015 Philippe Lhoste / PhiLhoSoft
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
-				width: 1000,
-				height: 730,
+				width: 1200,
+				height: 700,
 
 				controls: true,
 				progress: true,

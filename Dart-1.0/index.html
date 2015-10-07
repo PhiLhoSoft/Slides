@@ -49,7 +49,7 @@
 
 <section data-markdown><script type="text/template">
 ### A sample class
-````dart
+```dart
 /** An employee is a Person with an enterprise id, a department and a salary. */
 class Employee extends Person implements HasId
 {
@@ -76,18 +76,18 @@ class Employee extends Person implements HasId
 
   @override String toString() { return name + " " + salary.toString() + " " + department.toString(); }
 }
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
 ##### Used as:
-````dart
+```dart
 Employee employee = new Employee("John J", "H2G2-42");
 employee.setSalary(1500).setDepartment(Department.DEVELOPMENT);
 print(employee);
 employee.setDepartment(Department.ACCOUNTING).changeSalary(1000);
 print(employee);
-````
+```
 This looks like a Java class, but it is actually Dart code!
 
 But there is more in Dart, we can see a more idiomatic version of this class, less verbose.
@@ -95,7 +95,7 @@ But there is more in Dart, we can see a more idiomatic version of this class, le
 
 <section data-markdown><script type="text/template">
 ### An idiomatic Dart class
-````dart
+```dart
 /// An employee is a [Person] with an enterprise id, a [Department] and a salary.
 class Employee extends Person implements HasId
 {
@@ -115,25 +115,25 @@ class Employee extends Person implements HasId
   // String interpolation
   @override String toString() => "$name $salary $department";
 }
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
 ##### Used as:
-````dart
+```dart
 Employee employeeI = new Employee("John I", "H2G2-42");
 employeeI ..salary = 1500 ..department = Department.DEVELOPMENT;
 print(employeeI);
 employeeI ..department = Department.ACCOUNTING ..changeSalary(1000);
 print(employeeI);
-````
+```
 
 As you can see, Dart code is smaller, avoiding lot of boilerplate code.
 </script></section>
 
 <section data-markdown><script type="text/template">
 #### Classes used in the above code
-````dart
+```dart
 abstract class HasId { String id; } // Interface definition. Automatically defines the accessors
 
 class Person { final String name; Person.named(this.name); } // Named constructor
@@ -151,7 +151,7 @@ class Department // Close of a Java enum
 
   @override String toString() => name;
 }
-````
+```
 </script></section>
 
 				</section>
@@ -242,11 +242,11 @@ No comments...
 
 <section data-markdown><script type="text/template">
 ### Variable declaration and assignment
-````dart
+```dart
 String str = "foo";
 int value;
 value = 42;
-````
+```
 Declaration with default value or explicit initialization, assignment, all familiar...
 The semi-colons are mandatory.
 
@@ -260,9 +260,9 @@ Variables can be declared `final`, making them immutable (they cannot be re-assi
 
 <section data-markdown><script type="text/template">
 ### Functions
-````dart
+```dart
 int square(int x) { return x * x; }
-````
+```
 Familiar, again, but there is more in Dart!
 </script></section>
 
@@ -379,7 +379,7 @@ Strings literals can reference variables in the form of `$x` (x being a variable
 <section data-markdown><script type="text/template">
 #### String examples
 
-````dart
+```dart
 const NO_ESCAPE = r"Nothing\nCan Escape\u000AFrom Here!\n$notInterpolated";
 final String MULTI_LINE = """
 <-- Initial newline is ignored.
@@ -387,20 +387,20 @@ String interpolation is OK \u2661: $someVariable and ${2 * someVariable / 3}
 Final newline is included -->
 """
 "This string is added to the previous literal!";
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
 #### Lists
 
 Are extensible arrays, ordered group of objects. They have the same syntax as Java's arrays (0-based, indexing, .length) but literals look like JavaScript:
-````dart
+```dart
 var list = [ 1, 3, 5, 7 ];
-````
+```
 A list declared as
-````dart
+```dart
 var list = new List(5);
-````
+```
 has a fixed size.
 </script></section>
 
@@ -408,7 +408,7 @@ has a fixed size.
 #### Maps
 
 Associate keys and values. Literals and access are in JavaScript style:
-````dart
+```dart
 var stuff = { 'a': "one", 'b': "two" };
 stuff['c'] = "three";
 assert(stuff['d'] == null);
@@ -416,7 +416,7 @@ assert(stuff.length == 3);
 
 // Typing a literal with generics
 Map<String, Person> people = <String, Person>{};
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
@@ -441,30 +441,30 @@ Beside the classical C-like operators, Dart offers some new ones.
 `~/` divides two numbers, returning an integer result.
 
 `as` casts a type to another.
-````dart
+```dart
 (somebody as Person).firstName = "John"; // Throws an exception if somebody cannot be cast!
-````
+```
 `is` is true if the object has the specified type.
-````dart
+```dart
 if (somebody is Person) ...
-````
+```
 `is!` is false if the object has the specified type.
-````dart
+```dart
 if (somebody is! Person) alert();
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
 `.` is the classical member access.
 
 `..` is a cascade operator, allowing to perform multiple operations on the members of a single object.
-````dart
+```dart
 person..eats("at Joe's")..sleeps("tonight");
-````
+```
 is equivalent to
-````dart
+```dart
 person.eats("at Joe's"); person.sleeps("tonight");
-````
+```
 without the need to explicitly return `this` on these methods.
 </script></section>
 
@@ -487,9 +487,9 @@ As seen, the classical control flow statements are supported.
 #### For loop
 
 Beside the numerical `for` loop, `Iterable` classes (`List`, `Set`, etc.) support the `for in` iteration:
-````dart
+```dart
 for (var item in collection) { doStuffWith(item); }
-````
+```
 Iterables also have the `forEach()` method taking a function as parameter. See the Function section.
 </script></section>
 
@@ -497,10 +497,10 @@ Iterables also have the `forEach()` method taking a function as parameter. See t
 #### Assert
 
 The `assert` statement throws an exception (`AssertionError`) if its parameter is false. They work only in checked mode, they are ignored (stripped out) in production mode.
-````dart
+```dart
 assert(param != null);
 assert(number >= 1 && number <= 100);
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
@@ -515,7 +515,7 @@ Only empty `case` clauses can fall-through. An explicit fall-through can be done
 
 <section data-markdown><script type="text/template">
 ##### Switch / case example
-````dart
+```dart
 switch (state)
 {
   case 'START':
@@ -539,7 +539,7 @@ toClosed:
   default: // Catch-all clause
     throw "Illegal state!";
 }
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
@@ -552,7 +552,7 @@ Dart provides `Exception` and `Error` types (and subtypes) that you can extend b
 
 <section data-markdown><script type="text/template">
 ##### Exception example
-````dart
+```dart
 try
 {
   doStuffThrowingExceptions();
@@ -574,7 +574,7 @@ catch (any)
 {
   // Catch all other objects than could have been thrown
 }
-````
+```
 </script></section>
 
 </section>
@@ -587,16 +587,16 @@ catch (any)
 These are important in Dart, and have many syntax goodies.
 
 Base syntax looks like:
-````dart
+```dart
 void doStuff(int number) { print("I do stuff with $number."); }
-````
+```
 In this form, types can be omitted but style guide recommends to put them.
 
 For simple functions, a shorthand syntax is available:
-````dart
+```dart
 doStuff(number) => print("I do stuff with $number.");
 present(person) => "My name is ${person.name}";
-````
+```
 Types can be added but style guide recommends to omit them...
 
 There can be only one expression (not a statement) after the `=>`.
@@ -624,24 +624,24 @@ These optional parameters are either positional or named. Both forms accept defa
 <section data-markdown><script type="text/template">
 #### Named optional parameters
 Named optional parameters are defined between soft braces:
-````dart
+```dart
 void setFlags({ bool bold, bool hidden }) { ... }
-````
+```
 and they can have default values:
-````dart
+```dart
 void setFlags({ bool bold: false, bool hidden: false }) { ... }
-````
+```
 They are called as:
-````dart
+```dart
 setFlags(bold: true); // bold is true, hidden is false
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
 #### Positional optional parameters
 
 Positional optional parameters are defined between square brackets:
-````dart
+```dart
 String build(String one, [ String two, String three ])
 {
   String result = "Making $one";
@@ -655,25 +655,25 @@ String build(String one, [ String two, String three ])
   }
   return result;
 }
-````
+```
 called as:
-````dart
+```dart
 build("First"); // ==> Making First
 build("First", "Second"); // ==> Making First with Second
 build("First", "Second", "Third"); // ==> Making First with Second and even with Third
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
 #### Positional optional parameters (con't)
 
 Positional parameters can have default values too:
-````dart
+```dart
 String build(String one, [ String two = "second one", String three ])
 {
   // idem
 }
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
@@ -692,7 +692,7 @@ Functions can be defined inside another function. They can be named (declaring a
 
 <section data-markdown><script type="text/template">
 #### First-class objects: example
-````dart
+```dart
 void bar({ int x, int y })
 {
   toString(v) { return v == null ? '' : v.toString(); }
@@ -715,7 +715,7 @@ foo("renaming");
 
 var onTheFly = (message) => "Speak up: ${message.toUpperCase()}!";
 print(onTheFly("important sentence"));
-````
+```
 An anonymous function is made with a parameter list (can be empty), followed by `=>` and an expression.
 </script></section>
 
@@ -723,7 +723,7 @@ An anonymous function is made with a parameter list (can be empty), followed by 
 #### Lexical closures
 
 A *closure* is a function object that has access to variables in its lexical scope, even when the function is used outside of its original scope.
-````dart
+```dart
 Function prefixerMaker(String prefix)
 {
   prefixer(String word)
@@ -741,7 +741,7 @@ main()
   assert(prefixer1("pan") == "japan");
   assert(prefixer2("Omer") == "doh-Omer");
 }
-````
+```
 The `prefixer()` closes over the `prefix` parameter, it is associated with its value when it is returned.
 </script></section>
 
@@ -749,7 +749,7 @@ The `prefixer()` closes over the `prefix` parameter, it is associated with its v
 #### Closures over for-loop
 
 Functions can also close over the iteration variables of a for loop, as if they were function parameters.
-````dart
+```dart
 var closures = [];
 for (int i = 1, j = 100; i < 5; i++, j -= 10)
 {
@@ -759,7 +759,7 @@ for (var f in closures)
 {
 	print(f(3));
 }
-````
+```
 Prints out 103, 96, 89, 82
 </script></section>
 
@@ -773,14 +773,14 @@ Prints out 103, 96, 89, 82
 Functions and data in a class are members of the class and are called *methods* and *instance variables*.
 
 When a class provides a constant constructor, we can create  a compile-time constant instance using `const` instead of `new`.
-````dart
+```dart
 var p = const Vector(1, 2);
-````
+```
 Such constant can be used as default parameter. Their instance is unique:
-````dart
+```dart
 var q = const Vector(1, 2);
 assert(identical(p, q)); // Same instance
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
@@ -793,7 +793,7 @@ As seen, instance variables are always public. But actually, they generate an im
 #### Constructors
 
 The classical form of constructors is supported:
-````dart
+```dart
 class Point
 {
   int x;
@@ -805,7 +805,7 @@ class Point
     this.y = y;
   }
 }
-````
+```
 As in Java, the style guide recommends using `this` only to disambiguate variable names.
 </script></section>
 
@@ -813,7 +813,7 @@ As in Java, the style guide recommends using `this` only to disambiguate variabl
 ##### Initialization constructors
 
 Since this pattern is very common, Dart made a shortcut for it:
-````dart
+```dart
 class Point
 {
   int x;
@@ -821,14 +821,14 @@ class Point
 
   Point(this.x, this.y);
 }
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
 ##### Constructor overloading
 
 As seen, Dart doesn't allow function overloading, so it provides named constructors for alternatives:
-````dart
+```dart
 class Point
 {
   int x;
@@ -842,14 +842,14 @@ class Point
     y = json['y'];
   }
 }
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
 ##### Constructors with init list
 
 A constructor can set instances variables before the constructor body runs, by using an initialization list:
-````dart
+```dart
 class Point
 {
   int x;
@@ -862,14 +862,14 @@ class Point
     otherInit();
   }
 }
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
 ##### Calling other constructor
 
 A constructor can call its parent's constructor:
-````dart
+```dart
 class Point3D extends Point
 {
   int z;
@@ -879,9 +879,9 @@ class Point3D extends Point
     this.z = z;
   }
 }
-````
+```
 and can just redirect to another constructor:
-````dart
+```dart
 class Point
 {
   int x;
@@ -891,14 +891,14 @@ class Point
   Point.onX(int x) : this(x, 0);
   Point.onY(int y) : this(0, y);
 }
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
 ##### Const constructors
 
 You can make compile-time constant objects by providing a `const` constructor.
-````dart
+```dart
 class FixedPoint
 {
   // Instance variables must be final
@@ -908,18 +908,18 @@ class FixedPoint
 
   static final FixedPoint origin = const FixedPoint(0, 0);
 }
-````
+```
 
 They are created by using `const` instead of `new`.
-````dart
+```dart
 var p = const FixedPoint(1, 2);
-````
+```
 Such constants can be used as default value for optional parameters. Identical constants are the same object:
-````dart
+```dart
 var q = const FixedPoint(1, 2);
 assert(identical(p, q)); // Same instance
 assert(identical(const FixedPoint(0, 0), FixedPoint.origin));
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
@@ -930,7 +930,7 @@ The `factory` keyword allows implementing a constructor that might create a new 
 
 <section data-markdown><script type="text/template">
 ##### Factory constructor example
-````dart
+```dart
 class Logger
 {
   final String name;
@@ -955,7 +955,7 @@ class Logger
 
 var logger = new Logger('UI');
 logger.log("Something happened!");
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
@@ -970,24 +970,24 @@ Methods cannot be overloaded, but can override an inherited method.
 #### Accessors
 
 As seen, when we access an instance variable, we do it via implicit accessors. They can be made explicit with the `get` and `set` keywords.
-````dart
+```dart
 class Product
 {
   float price;
 }
-````
+```
 `Product`'s variable is accessed directly:
-````dart
+```dart
 product.price = 42;
 print("${product.price} €");
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
 #### Accessor definition
 
 If, one day, we must check the value when setting it, or transform it before returning it, it can be done without change to the interface:
-````dart
+```dart
 class Product
 {
   static const num VAT = 0.196;
@@ -997,7 +997,7 @@ class Product
   num get price => priceWithoutVAT * (1 + VAT);
   set price(num p) => priceWithoutVAT = p / (1 + VAT);
 }
-````
+```
 and it is still accessed like: `product.price = 42;`
 
 and we can use `product.priceWithoutVAT` too.
@@ -1008,7 +1008,7 @@ So `get` and `set` allows to define a new virtual property (only `get` is needed
 #### Implicit interfaces
 
 Actually, Dart doesn't have an `interface` keyword. Every class implicitly defines an interface containing all the instance members of the class (not only methods, but also instance variables, or actually their accessors).
-````dart
+```dart
 class Animal
 {
   String name;
@@ -1023,7 +1023,7 @@ class Duck implements Animal
   void speak() { print("$name quacks!"); } // This one too
   // The constructor isn't part of the interface; neither is the const.
 }
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
@@ -1040,19 +1040,19 @@ Abstract classes with all abstract methods are equivalent to Java's interfaces.
 #### Overridable operators
 
 The following operators are overridable, ie. you can redefine them in a class, allowing to use the operator on instances of this class.
-````
+```
 <   +   |   []
 >   /   ^   []=
 <=  ~/  &   ~
 >=  *   <<  ==
 -   %   >>
-````
+```
 The corresponding assignment operators (like `+=`) are overridden as well.
 </script></section>
 
 <section data-markdown><script type="text/template">
 ##### Overridable operators example
-````dart
+```dart
 class Vector
 {
   final num x;
@@ -1072,12 +1072,12 @@ class Vector
 
   @override String toString() => "($x, $y)";
 }
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
 ##### Overridable operators usage
-````dart
+```dart
 final v1 = new Vector(1, 2);
 final v2 = new Vector(5, 7);
 
@@ -1087,7 +1087,7 @@ assert((v2 - v1).x == 4 && (v2 - v1).y == 5);
 var subv = new Vector(3.14, 2.71);
 subv -= v1;
 print("Overridden minus on vector: $subv");
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
@@ -1101,7 +1101,7 @@ A class can use one or several mixins declared after the `with` keyword. Then th
 </script></section>
 
 <section data-markdown><script type="text/template">
-````dart
+```dart
 abstract class NameBrick { String name; } // Mixin. abstract is not mandatory but makes sense...
 
 abstract class HumanNameBrick // Mixin
@@ -1122,11 +1122,11 @@ $postalCode $city - $country""";
 }
 
 abstract class CompanyEntity { String officialId; CompanyEntity(this.officialId); } // Base brick...
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
-````dart
+```dart
 class Company extends CompanyEntity with NameBrick, AddressBrick  // The class must extend another to use a mixin
 {
   Company(String officialId, String name) : super(officialId)
@@ -1147,12 +1147,12 @@ class Person extends Object with HumanNameBrick, AddressBrick  // The class to e
 
   @override String toString() => "My name is $lastName, $fullName.";
 }
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
 Usage:
-````dart
+```dart
 Person p1 = new Person(25, "Demi", "Lees");
 p1..addressLine1 = "Hollywood Drive" ..postalCode = "4651"
     ..city = "Los Angeles" ..country = "USA";
@@ -1165,7 +1165,7 @@ Company c = new Company("42-31415", "Roundabout Ltd");
 c..addressLine1 = "Muholland Drive" ..postalCode = "4670"
     ..city = "Hollywood" ..country = "USA";
 print(c); print(c.formattedAddress);
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
@@ -1210,40 +1210,40 @@ Libraries can be distributed using packages.
 The namespace of a library can be used in the scope of another library (or app), by using the `import` directive.
 
 Examples:
-````dart
+```dart
 import 'dart:html'; // Used in many Web apps
 import 'package:userDefinedLib/utils.dart';
 import 'sameFolder.dart';
-````
+```
 `import` wants a URI specifying the library. All built-in libraries use the special `dart:` scheme. Other libraries can use a file system path or the `package:` scheme. The later specifies libraries provided by a package manager such as the `pub` tool.
 </script></section>
 
 <section data-markdown><script type="text/template">
 ##### Library prefix
 To avoid potential conflicts (two libraries using the same identifier), you can specify a prefix on one or both libraries. For example, if you use two libraries defining the very common name `Node`, one can be prefixed:
-````dart
+```dart
 import 'package:lib1/lib1.dart';
 import 'package:lib2/lib2.dart' as other;
 
 var node1 = new Node(); // Use Node from lib1
 var node2 = new other.Node(); // Use Node from lib2
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
 ##### Partial library import
 You can also import only part of a library:
-````dart
+```dart
 import 'package:lib1/lib1.dart' show Node; // Import only Node
 import 'package:lib2/lib2.dart' hide Node; // Import everything except Node
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
 #### Defining libraries
 
 To make your own library, you declare it with `library` and specify additional files with `part`.
-````dart
+```dart
 library html_soup; // Declare this .dart file is a library named html_soup
 
 import 'dart:hml'; // This library uses the HTML library
@@ -1252,20 +1252,20 @@ part 'parser.dart';
 part 'query.dart';
 
 // Main code here
-````
+```
 In the `parser.dart` and the `query.dart` files:
-````dart
+```dart
 part of html_soup;
 
 // Code goes here
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
 ##### Library export
 You can combine or re-package libraries by re-exporting part or all of them.
 Example:
-````dart
+```dart
 library foo;
 yo() => print('Yo!');
 
@@ -1278,7 +1278,7 @@ export 'foo.dart' show yo; // Exposes yo() as it was its own
 import 'bar.dart';
 
 yo(); // We can use the function defined in foo.dart
-````
+```
 </script></section>
 
 </section>
@@ -1289,11 +1289,11 @@ yo(); // We can use the function defined in foo.dart
 ### Typedef
 
 Functions are objects, of type `Function`. If you want more typing, indicating what are the parameter types and the return type, you need to use a typedef:
-````dart
+```dart
 typedef int Comparator(Object a, Object b);
-````
+```
 Thus, we can specify exactly the kind of function expected in a variable or parameter:
-````dart
+```dart
 class SortedStuff
 {
   Comparator comparator;
@@ -1309,7 +1309,7 @@ main()
   assert(stuff.comparator is Function); // Still true
   assert(stuff.comparator is Comparator); // More precise
 }
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
@@ -1325,7 +1325,7 @@ Dart has three built-in annotations: `@deprecated`, `@override` and `@proxy`.
 #### Metadata creation
 
 You can create your own metadata annotations. For example:
-````dart
+```dart
 library todo;
 
 class todo
@@ -1335,9 +1335,9 @@ class todo
 
   const todo(this.owner, this.task);
 }
-````
+```
 Used as:
-````dart
+```dart
 import 'todo.dart'
 
 @todo('somebody', 'This should work!')
@@ -1345,7 +1345,7 @@ void muddleAround()
 {
   trySomething();
 }
-````
+```
 </script></section>
 
 <section data-markdown><script type="text/template">
@@ -1398,7 +1398,7 @@ Playground...
 </script></section>
 <section data-markdown><script type="text/template">
 #### Testing highlight.js for Dart
-````dart
+```dart
 library stuff;
 import 'dart:mirrors';
 
@@ -1427,7 +1427,7 @@ $variable$otherVariable -#- ${4 * variable / 3} - line two""";
 
 	@override toString() => a$_ + d$d;
 }
-````
+```
 </script></section>
 				</section>
 			</div>
@@ -1442,8 +1442,8 @@ $variable$otherVariable -#- ${4 * variable / 3} - line two""";
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
-				width: 1000,
-				height: 730,
+				width: 1200,
+				height: 700,
 
 				controls: true,
 				progress: true,
