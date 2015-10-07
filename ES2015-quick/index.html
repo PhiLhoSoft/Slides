@@ -146,18 +146,34 @@ Functions defined this way in an object literal can access the object's properti
 ### Before
 
 ```
-var foo = function (a, n) { var r = ''; for (var i = 0; i < n; i++) { r += 'a'; }; return a; };
+var foo = function (a, n)
+{
+	var r = '';
+	for (var i = 0; i < n; i++)
+	{
+		r += a;
+	}
+	return r;
+};
 [ 1, 2 ].map(function (x) { return x * 2; }); // gives [ 2, 3 ]
 ```
 </script></section>
 
 <section data-markdown><script type="text/template">
-## After
+### After
 
 ```
 // Not much improvement for complex functions
-var foo = (a, n) => { var r = ''; for (var i = 0; i < n; i++) { r += 'a'; }; return a; };
-// Shine for one parameter (no parentheses) and if returns directly an expression
+var foo = (a, n) =>
+{
+	var r = '';
+	for (var i = 0; i < n; i++)
+	{
+		r += a;
+	}
+	return r;
+};
+// Shines for one parameter (no parentheses) and if it returns directly an expression
 [ 1, 2 ].map(x => x * 2); // gives [ 2, 3 ]
 ```
 </script></section>
@@ -209,7 +225,8 @@ var o =
 <section data-markdown><script type="text/template">
 ## Destructuring
 
-Binding using pattern matching, supporting arrays and objects. Fail-soft: produce `undefined` if not matching.
+Binding using pattern matching, supporting arrays and objects.<br>
+Fail-soft: produce `undefined` if not matching.
 
 ```
 // list matching
@@ -222,7 +239,7 @@ var [ c, d = 5, e ] = [ 'alone' ];
 
 // object matching
 var { first: aa, levels: { two: bb } } =
-	{ first: 77, levels: { two: 'deep' , too: 'ignore' } };
+	{ first: 77, levels: { two: 'deep', too: 'ignore' } };
 // aa === 77, bb = 'deep'
 
 // in parameters
@@ -259,12 +276,21 @@ h(...[ 3, 2, 1 ]); // gives 321
 				<section>
 
 <section data-markdown><script type="text/template">
-## Unicode; New Literals
+## Unicode & New Literals
 
 ES5 only supported the base plane, ie. 16-bit characters, seeing 21-bit chars as two chars.<br>
 ES6 brings full support for the "astral" plane, in regular expressions and with new functions, while keeping the old behavior.
 
-New literal: `\u{20BB7} === '𠮷'`
+```
+// Length still at 2
+"𠮷".length === 2
+// Old regex
+"𠮷".match(/./)[0].length === 1 // Has matched half of char
+// New regex
+"𠮷".match(/./u)[0].length === 2 // Has matched full char thanks to u modifier
+```
+
+New Unicode literal: `\u{20BB7} === '𠮷' === '\uD842\uDFB7'`
 
 Binary and octal literals: `0b111110111 === 503 === 0o767`
 </script></section>
@@ -274,6 +300,107 @@ Binary and octal literals: `0b111110111 === 503 === 0o767`
 				<section>
 
 <section data-markdown><script type="text/template">
+## New APIs:<br>Math, Number, String, Object
+
+```
+Number.EPSILON
+Number.isInteger(Infinity) // false
+Number.isNaN("NaN") // false
+
+Math.acosh(3) // 1.762747174039086
+Math.hypot(3, 4) // 5
+Math.imul(Math.pow(2, 32) - 1, Math.pow(2, 32) - 2) // 2
+
+"abcde".includes("cd") // true
+"abc".repeat(3) // "abcabcabc"
+
+Array.from(document.querySelectorAll("*")) // Returns a real Array
+Array.of(1, 2, 3) // Similar to new Array(...), but without special one-arg behavior
+[ 0, 0, 0 ].fill(7, 1) // [0,7,7]
+[ 1, 2, 3 ].findIndex(x => x == 2) // 1
+[ "a", "b", "c" ].entries() // iterator [0, "a"], [1,"b"], [2,"c"]
+[ "a", "b", "c" ].keys() // iterator 0, 1, 2
+[ "a", "b", "c" ].values() // iterator "a", "b", "c"
+
+Object.assign(Point, { origin: new Point(0,0) })
+```
+</script></section>
+
+				</section>
+
+				<section>
+
+<section data-markdown><script type="text/template">
+## Modules
+
+Codifies practices from common JS module loaders: AMD, CommonJS.<br>
+At runtime, defaults to async loading, code is on hold until all modules are loaded.
+
+```
+// -- lib/math.js
+export function sum(x, y)
+{
+  return x + y;
+}
+export const PI = 3.141593;
+
+// -- app.js
+import * as newMath from "lib/math";
+alert("2π = " + newMath.sum(newMath.PI, newMath.PI));
+
+// -- otherApp.js
+import { sum, PI } from "lib/math";
+alert("2π = " + sum(PI, PI));
+```
+</script></section>
+
+<section data-markdown><script type="text/template">
+Re-export from other module, export default
+
+```
+// -- lib/mathplusplus.js
+// Re-export all from 'math'
+export * from "lib/math";
+export const E = 2.71828182846;
+// Useful for modules exporting only one function / object
+export default function(x)
+{
+	return Math.exp(x);
+}
+
+// -- app.js
+// exp, the first import, gets the default
+// PI is seen as part of mathplusplus, being re-exported there
+import exp, { PI, E } from "lib/mathplusplus";
+alert("π^e = " + exp(PI, E));
+```
+</script></section>
+
+				</section>
+
+				<section>
+
+<section data-markdown><script type="text/template">
+## Promises
+
+Also codifies promises implemented in numerous libraries, used for asynchronous programming.<br>
+They represent values that will be available in the future, that might fail. They can be chained.
+
+```
+function timeout(duration = 0)
+{
+	return new Promise((resolve, reject) =>
+	{
+		setTimeout(resolve, duration);
+	});
+}
+
+var p = timeout(1000)
+	.then(() => { return timeout(2000); })
+	.then(() => { throw new Error("Ouch!"); })
+	.catch(err => { return Promise.all([ timeout(100), timeout(200) ]);
+});
+```
 </script></section>
 
 				</section>
