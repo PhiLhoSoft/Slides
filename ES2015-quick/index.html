@@ -137,9 +137,9 @@ The list, and lot of the content, comes from the good overview, [Babel's Learn E
 <section data-markdown><script type="text/template">
 ## Arrows<br>and Lexical This
 
-Shortcut notation to define functions in a terse way.
+Shortcut notation to define anonymous functions in a terse way.
 
-Functions defined this way in an object literal can access the object's properties.
+Functions defined in an object literal can access the object's properties (see Enhanced Object Literals).
 </script></section>
 
 <section data-markdown><script type="text/template">
@@ -185,11 +185,19 @@ var foo = (a, n) =>
 <section data-markdown><script type="text/template">
 ## Template Strings
 
+Multiline strings with string interpolation (evaluation of variables or expressions inside the template).
+
 ```
 var s = 'string', p = n => n !== 1 ? 's' : '';
 var msg = `Multiline
 ${s}${p(5)}
-are (at least!) possible.`
+are ${s.length % 2 === 0 ? '(at least!)' : '?'} possible.`
+```
+gives
+```
+Multiline
+strings
+are (at least!) possible.
 ```
 </script></section>
 
@@ -203,18 +211,23 @@ are (at least!) possible.`
 ```
 var aProtoObject = {},
 	handler = x => x,
+	other = 'a property',
 	value = 42;
 var o =
 {
-  // define prototype of this object
-  __proto__: aProtoObject,
-  // same as handler: handler
-  handler,
-  // method
-  toString() { return 'o & '  + super.toString(); },
-  // dynamic property name
-  [ `prefix_${value}` ]: value
+	// define prototype of this object
+	__proto__: aProtoObject,
+	// same as handler: handler
+	handler,
+	other,
+	// method calling super object
+	toString() { return 'o & '  + super.toString(); },
+	// illustrate lexical this
+	showInfo() { return `-- ${this.other} --` },
+	// dynamic property name
+	[ `prefix_${value}` ]: value
 };
+o.showFoo()
 ```
 </script></section>
 
@@ -239,7 +252,7 @@ var [ c, d = 5, e ] = [ 'alone' ];
 
 // object matching
 var { first: aa, levels: { two: bb } } =
-	{ first: 77, levels: { two: 'deep', too: 'ignore' } };
+		{ levels: { two: 'deep', too: 'ignore'  }, other, first: 77 };
 // aa === 77, bb = 'deep'
 
 // in parameters
@@ -283,14 +296,14 @@ ES6 brings full support for the "astral" plane, in regular expressions and with 
 
 ```
 // Length still at 2
-"𠮷".length === 2
+"👂".length === 2
 // Old regex
-"𠮷".match(/./)[0].length === 1 // Has matched half of char
+"👂".match(/./)[0].length === 1 // Has matched half of char
 // New regex
-"𠮷".match(/./u)[0].length === 2 // Has matched full char thanks to u modifier
+"👂".match(/./u)[0].length === 2 // Has matched full char thanks to u modifier
 ```
 
-New Unicode literal: `\u{20BB7} === '𠮷' === '\uD842\uDFB7'`
+New Unicode literal: `\u{1F442} === '👂' === '\uD83D\uDC42'`
 
 Binary and octal literals: `0b111110111 === 503 === 0o767`
 </script></section>
