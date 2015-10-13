@@ -25,6 +25,8 @@
 			document.write( '<link rel="stylesheet" href="../_Reveal/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 		</script>
 
+		<script>document.write('<base href="' + document.location + '">');</script>
+
 		<!--[if lt IE 9]>
 		<script src="../_Reveal/lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -164,17 +166,17 @@ var foo = function (a, n)
 
 ```
 // Not much improvement for complex functions
-var foo = (a, n) =>
+const foo = (a, n) =>
 {
-	var r = '';
-	for (var i = 0; i < n; i++)
+	let r = '';
+	for (let i = 0; i < n; i++)
 	{
 		r += a;
 	}
 	return r;
 };
 // Shines for one parameter (no parentheses) and if it returns directly an expression
-[ 1, 2 ].map(x => x * 2); // gives [ 2, 3 ]
+[ 1, 2 ].map(x => x * 2); // gives [ 2, 4 ]
 ```
 </script></section>
 
@@ -188,8 +190,8 @@ var foo = (a, n) =>
 Multiline strings with string interpolation (evaluation of variables or expressions inside the template).
 
 ```
-var s = 'string', p = n => n !== 1 ? 's' : '';
-var msg = `Multiline
+const s = 'string', p = n => n !== 1 ? 's' : '';
+const msg = `Multiline
 ${s}${p(5)}
 are ${s.length % 2 === 0 ? '(at least!)' : '?'} possible.`
 ```
@@ -209,11 +211,11 @@ are (at least!) possible.
 ## Enhanced Object Literals
 
 ```
-var aProtoObject = {},
+const aProtoObject = {},
 	handler = x => x,
 	other = 'a property',
 	value = 42;
-var o =
+const o =
 {
 	// define prototype of this object
 	__proto__: aProtoObject,
