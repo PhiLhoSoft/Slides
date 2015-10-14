@@ -3,7 +3,7 @@ Language: CSS
 Category: common, css
 */
 
-function(hljs) {
+hljs.registerLanguage("css", function(hljs) {
   var IDENT_RE = '[a-zA-Z-][a-zA-Z0-9_-]*';
   var FUNCTION = {
     className: 'function',
@@ -103,4 +103,4 @@ function(hljs) {
       }
     ]
   };
-}
+});

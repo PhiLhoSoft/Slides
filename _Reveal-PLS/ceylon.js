@@ -2,7 +2,7 @@
 Language: Ceylon
 Author: Lucas Werkmeister <mail@lucaswerkmeister.de>
 */
-function(hljs) {
+hljs.registerLanguage("ceylon", function(hljs) {
   // 2.3. Identifiers and keywords
   var KEYWORDS =
     'assembly module package import alias class interface object given value ' +
@@ -68,4 +68,4 @@ function(hljs) {
       }
     ].concat(EXPRESSIONS)
   };
-}
+});
