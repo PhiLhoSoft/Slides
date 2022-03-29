@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 169.33333 127"
+   height="480"
+   width="640">
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible;"
+       id="Arrow1Lend"
+       refX="0.0"
+       refY="0.0"
+       orient="auto">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill-rule:evenodd;stroke:#ffcc00;stroke-width:1pt;stroke-opacity:1;fill:#ffcc00;fill-opacity:1"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path1723" />
+    </marker>
+  </defs>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1">
+    <rect
+       ry="7.5596652"
+       y="1.8897392"
+       x="1.7007511"
+       height="15.11933"
+       width="165.36487"
+       id="rect837"
+       style="opacity:1;fill:#feff94;fill-opacity:1;stroke:#000000;stroke-width:0.0997165" />
+    <text
+       id="text835"
+       y="12.594092"
+       x="37.703056"
+       style="font-size:9.525px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;letter-spacing:0px;word-spacing:0px;fill:#800066;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="font-size:9.525px;fill:#800066;stroke-width:0.264583"
+         y="12.594092"
+         x="37.703056"
+         id="tspan833">Les branches de Git</tspan></text>
+    <text
+       id="text859"
+       y="31.267071"
+       x="136.03726"
+       style="font-size:4.93889px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="font-size:4.93889px;stroke-width:0.264583"
+         y="31.267071"
+         x="136.03726"
+         id="tspan857">HEAD</tspan></text>
+    <text
+       id="text869"
+       y="38.63031"
+       x="11.120039"
+       style="font-size:4.7625px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         id="tspan873"
+         style="font-size:4.7625px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         y="38.63031"
+         x="11.120039">master</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.7625px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000080;stroke-width:0.264583"
+       x="-52.841782"
+       y="55.683399"
+       id="text928"><tspan
+         x="-52.841782"
+         y="55.683399"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.7625px;font-family:Verdana;-inkscape-font-specification:'Verdana Italic';text-align:center;text-anchor:middle;fill:#000080;stroke-width:0.264583"
+         id="tspan926">Working</tspan><tspan
+         id="tspan953"
+         x="-52.841782"
+         y="61.636524"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.7625px;font-family:Verdana;-inkscape-font-specification:'Verdana Italic';text-align:center;text-anchor:middle;fill:#000080;stroke-width:0.264583">directory</tspan></text>
+    <text
+       id="text957"
+       y="96.572914"
+       x="65.389877"
+       style="font-size:6.35px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.264583"
+         y="96.572914"
+         x="65.389877"
+         id="tspan955" /></text>
+    <path
+       id="path1664"
+       d="m 59.042568,37.631557 6.725289,14.151179 67.209623,0"
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#ff00ff;stroke-width:1.5875;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1" />
+    <path
+       id="path1641"
+       d="m 24.568452,37.419642 116.794638,0"
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ff2a2a;fill-opacity:1;stroke:#ff2a2a;stroke-width:1.48484;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1" />
+    <circle
+       r="3.3072915"
+       cy="25.229908"
+       cx="7.654016"
+       id="path1648"
+       style="opacity:0.403;fill:#00ff00;fill-opacity:1;stroke:#008000;stroke-width:1.48484;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none" />
+    <use
+       height="100%"
+       width="100%"
+       transform="translate(51.404766,12.095238)"
+       id="use1650"
+       xlink:href="#path1648"
+       y="0"
+       x="0" />
+    <use
+       height="100%"
+       width="100%"
+       transform="translate(77.863102,12.095238)"
+       id="use1652"
+       xlink:href="#path1648"
+       y="0"
+       x="0" />
+    <use
+       height="100%"
+       width="100%"
+       transform="translate(119.44048,12.095238)"
+       id="use1654"
+       xlink:href="#path1648"
+       y="0"
+       x="0" />
+    <use
+       height="100%"
+       width="100%"
+       transform="translate(134.37053,12.095238)"
+       id="use1656"
+       xlink:href="#path1648"
+       y="0"
+       x="0" />
+    <use
+       height="100%"
+       width="100%"
+       transform="translate(16.81994,12.095238)"
+       id="use1658"
+       xlink:href="#path1648"
+       y="0"
+       x="0" />
+    <text
+       id="text1662"
+       y="26.269346"
+       x="12.473214"
+       style="font-size:3.52777px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.264583"
+         y="26.269346"
+         x="12.473214"
+         id="tspan1660">= commit</tspan></text>
+    <use
+       height="100%"
+       width="100%"
+       transform="translate(57.997487,26.459683)"
+       id="use1666"
+       xlink:href="#path1648"
+       y="0"
+       x="0" />
+    <use
+       height="100%"
+       width="100%"
+       transform="translate(82.426461,26.593318)"
+       id="use1668"
+       xlink:href="#path1648"
+       y="0"
+       x="0" />
+    <use
+       height="100%"
+       width="100%"
+       transform="translate(125.08214,26.593317)"
+       id="use1670"
+       xlink:href="#path1648"
+       y="0"
+       x="0" />
+    <text
+       id="text1678"
+       y="53.335506"
+       x="41.653229"
+       style="font-size:4.7625px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         id="tspan1676"
+         style="font-size:4.7625px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         y="53.335506"
+         x="41.653229">feature-branch</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.7625px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;stroke-width:0.264583"
+       x="11.120039"
+       y="86.255356"
+       id="text1682"><tspan
+         x="11.120039"
+         y="86.255356"
+         style="font-size:4.7625px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         id="tspan1680">master</tspan></text>
+    <path
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#ff00ff;stroke-width:1.5875;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
+       d="m 59.042568,85.256587 6.725289,14.151179 67.055703,0 29.13923,-14.363094"
+       id="path1684" />
+    <path
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#ff2a2a;fill-opacity:1;stroke:#ff2a2a;stroke-width:1.48484;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
+       d="m 24.568452,85.044672 137.394338,0"
+       id="path1686" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#path1648"
+       id="use1688"
+       transform="translate(51.404766,59.720268)"
+       width="100%"
+       height="100%" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#path1648"
+       id="use1690"
+       transform="translate(77.863102,59.720268)"
+       width="100%"
+       height="100%" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#path1648"
+       id="use1692"
+       transform="translate(119.44048,59.720268)"
+       width="100%"
+       height="100%" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#path1648"
+       id="use1694"
+       transform="translate(134.37053,59.720268)"
+       width="100%"
+       height="100%" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#path1648"
+       id="use1696"
+       transform="translate(16.81994,59.720268)"
+       width="100%"
+       height="100%" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#path1648"
+       id="use1698"
+       transform="translate(57.997487,74.084713)"
+       width="100%"
+       height="100%" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#path1648"
+       id="use1700"
+       transform="translate(82.426461,74.218348)"
+       width="100%"
+       height="100%" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#path1648"
+       id="use1702"
+       transform="translate(125.08214,74.218347)"
+       width="100%"
+       height="100%" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.7625px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;stroke-width:0.264583"
+       x="32.12822"
+       y="100.96056"
+       id="text1706"><tspan
+         x="32.12822"
+         y="100.96056"
+         style="font-size:4.7625px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         id="tspan1704">merged feature-branch</tspan></text>
+    <use
+       height="100%"
+       width="100%"
+       transform="translate(154.78125,59.531249)"
+       id="use1708"
+       xlink:href="#path1648"
+       y="0"
+       x="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.93889px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="154.93607"
+       y="78.892067"
+       id="text1712"><tspan
+         id="tspan1710"
+         x="154.93607"
+         y="78.892067"
+         style="font-size:4.93889px;stroke-width:0.264583">HEAD</tspan></text>
+    <text
+       id="text1716"
+       y="115.35953"
+       x="148.51439"
+       style="font-size:4.7625px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         id="tspan1714"
+         style="font-size:4.7625px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         y="115.35953"
+         x="148.51439">merge commit</tspan></text>
+    <path
+       id="path1718"
+       d="m 148.16666,110.93601 12.45978,-22.2832"
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#ffcc00;stroke-width:0.15;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow1Lend);stop-color:#000000;stop-opacity:1" />
+  </g>
+</svg>

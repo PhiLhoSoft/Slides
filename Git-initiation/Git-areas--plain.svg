@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 169.33333 127"
+   height="480"
+   width="640">
+  <defs
+     id="defs2" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1">
+    <rect
+       ry="7.5596652"
+       y="1.8897392"
+       x="1.7007511"
+       height="15.11933"
+       width="165.36487"
+       id="rect837"
+       style="opacity:1;fill:#feff94;fill-opacity:1;stroke:#000000;stroke-width:0.0997165" />
+    <text
+       id="text835"
+       y="12.594092"
+       x="11.244706"
+       style="font-size:9.525px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583;fill:#800066;"
+       xml:space="preserve"><tspan
+         style="font-size:9.525px;stroke-width:0.264583;fill:#800066;"
+         y="12.594092"
+         x="11.244706"
+         id="tspan833">Les zones de Git - Cycle de vie</tspan></text>
+    <rect
+       y="21.500084"
+       x="3.0231681"
+       height="26.881508"
+       width="118.87479"
+       id="rect853"
+       style="opacity:1;fill:#00ff21;fill-opacity:1;stroke:#000000;stroke-width:0.125134" />
+    <rect
+       style="opacity:1;fill:#eed7f4;fill-opacity:1;stroke:#000000;stroke-width:0.0602772"
+       id="rect845"
+       width="23.752222"
+       height="82.922859"
+       x="6.8939548"
+       y="41.636585"
+       ry="6.0972633" />
+    <rect
+       style="opacity:1;fill:#00afff;fill-opacity:1;stroke:#000000;stroke-width:0.0665114"
+       id="rect855"
+       width="33.510792"
+       height="26.94013"
+       x="131.50575"
+       y="21.470772" />
+    <rect
+       ry="6.087441"
+       y="41.636562"
+       x="136.35735"
+       height="82.789268"
+       width="23.752272"
+       id="rect847"
+       style="opacity:1;fill:#afafe9;fill-opacity:1;stroke:#000000;stroke-width:0.0602286" />
+    <rect
+       style="opacity:1;fill:#ddafe9;fill-opacity:1;stroke:#000000;stroke-width:0.0465857"
+       id="rect849"
+       width="23.765915"
+       height="49.502148"
+       x="50.041592"
+       y="41.629742"
+       ry="3.6398606" />
+    <rect
+       ry="5.2525387"
+       y="41.634422"
+       x="93.200745"
+       height="71.434593"
+       width="23.756548"
+       id="rect851"
+       style="opacity:1;fill:#cd87de;fill-opacity:1;stroke:#000000;stroke-width:0.0559512" />
+    <text
+       id="text859"
+       y="30.049107"
+       x="53.672619"
+       style="font-size:6.35px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.264583"
+         y="30.049107"
+         x="53.672619"
+         id="tspan857">Local</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:6.35px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="134.9375"
+       y="30.049107"
+       id="text863"><tspan
+         id="tspan861"
+         x="134.9375"
+         y="30.049107"
+         style="stroke-width:0.264583">Distant /</tspan><tspan
+         id="tspan865"
+         x="134.9375"
+         y="37.986607"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Verdana;-inkscape-font-specification:'Verdana Italic';stroke-width:0.264583">Remote</tspan></text>
+    <text
+       id="text869"
+       y="58.208332"
+       x="18.786451"
+       style="font-size:4.7625px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="font-size:4.7625px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         y="58.208332"
+         x="18.786451"
+         id="tspan867">Espace</tspan><tspan
+         id="tspan871"
+         style="font-size:4.7625px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         y="64.161453"
+         x="18.786451">de</tspan><tspan
+         id="tspan873"
+         style="font-size:4.7625px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         y="70.114578"
+         x="18.786451">travail</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.7625px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;stroke-width:0.264583"
+       x="62.064724"
+       y="51.858326"
+       id="text881"><tspan
+         x="62.064724"
+         y="51.858326"
+         style="font-size:4.7625px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         id="tspan879">Zone</tspan><tspan
+         id="tspan906"
+         x="62.064724"
+         y="57.811451"
+         style="font-size:4.7625px;text-align:center;text-anchor:middle;stroke-width:0.264583">de</tspan><tspan
+         id="tspan908"
+         x="62.064724"
+         y="63.764572"
+         style="font-size:4.7625px;text-align:center;text-anchor:middle;stroke-width:0.264583">transit</tspan></text>
+    <text
+       id="text889"
+       y="58.208332"
+       x="105.15401"
+       style="font-size:4.7625px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         id="tspan887"
+         style="font-size:4.7625px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         y="58.208332"
+         x="105.15401">Dépôt</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.7625px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;stroke-width:0.264583"
+       x="148.81026"
+       y="58.208332"
+       id="text897"><tspan
+         x="148.81026"
+         y="58.208332"
+         style="font-size:4.7625px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         id="tspan895">Dépôt</tspan><tspan
+         id="tspan920"
+         x="148.81026"
+         y="64.161453"
+         style="font-size:4.7625px;text-align:center;text-anchor:middle;stroke-width:0.264583">distant</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.7625px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000080;stroke-width:0.264583"
+       x="18.786451"
+       y="96.308365"
+       id="text928"><tspan
+         x="18.786451"
+         y="96.308365"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.7625px;font-family:Verdana;-inkscape-font-specification:'Verdana Italic';text-align:center;text-anchor:middle;fill:#000080;stroke-width:0.264583"
+         id="tspan926">Working</tspan><tspan
+         id="tspan953"
+         x="18.786451"
+         y="102.26149"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.7625px;font-family:Verdana;-inkscape-font-specification:'Verdana Italic';text-align:center;text-anchor:middle;fill:#000080;stroke-width:0.264583">directory</tspan></text>
+    <text
+       id="text936"
+       y="73.554176"
+       x="62.064724"
+       style="font-size:4.7625px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000080;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.7625px;font-family:Verdana;-inkscape-font-specification:'Verdana Italic';text-align:center;text-anchor:middle;fill:#000080;stroke-width:0.264583"
+         y="73.554176"
+         x="62.064724"
+         id="tspan934">Staging</tspan><tspan
+         id="tspan964"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.7625px;font-family:Verdana;-inkscape-font-specification:'Verdana Italic';text-align:center;text-anchor:middle;fill:#000080;stroke-width:0.264583"
+         y="79.507301"
+         x="62.064724">area /</tspan><tspan
+         id="tspan1031"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.7625px;font-family:Verdana;-inkscape-font-specification:'Verdana Italic';text-align:center;text-anchor:middle;fill:#000080;stroke-width:0.264583"
+         y="85.460426"
+         x="62.064724">index</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.7625px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000080;stroke-width:0.264583"
+       x="105.15401"
+       y="85.195854"
+       id="text940"><tspan
+         x="105.15401"
+         y="85.195854"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.7625px;font-family:Verdana;-inkscape-font-specification:'Verdana Italic';text-align:center;text-anchor:middle;fill:#000080;stroke-width:0.264583"
+         id="tspan938">Reposi-</tspan><tspan
+         id="tspan966"
+         x="105.15401"
+         y="91.148979"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.7625px;font-family:Verdana;-inkscape-font-specification:'Verdana Italic';text-align:center;text-anchor:middle;fill:#000080;stroke-width:0.264583">tory</tspan></text>
+    <text
+       id="text946"
+       y="96.308365"
+       x="148.81026"
+       style="font-size:4.7625px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000080;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.7625px;font-family:Verdana;-inkscape-font-specification:'Verdana Italic';text-align:center;text-anchor:middle;fill:#000080;stroke-width:0.264583"
+         y="96.308365"
+         x="148.81026"
+         id="tspan944">Remote</tspan><tspan
+         id="tspan970"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.7625px;font-family:Verdana;-inkscape-font-specification:'Verdana Italic';text-align:center;text-anchor:middle;fill:#000080;stroke-width:0.264583"
+         y="102.26149"
+         x="148.81026">reposi-</tspan><tspan
+         id="tspan972"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.7625px;font-family:Verdana;-inkscape-font-specification:'Verdana Italic';text-align:center;text-anchor:middle;fill:#000080;stroke-width:0.264583"
+         y="108.21461"
+         x="148.81026">tory</tspan></text>
+    <text
+       id="text957"
+       y="96.572914"
+       x="65.389877"
+       style="font-size:6.35px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.264583"
+         y="96.572914"
+         x="65.389877"
+         id="tspan955" /></text>
+    <path
+       id="path983"
+       d="m 31.086786,61.515625 13.91128,0 v -2.655823 l 4.748991,5.2969 -4.748991,5.299966 v -2.649377 l -13.91128,0 z"
+       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:#afe9dd;fill-opacity:1;stroke:none;stroke-width:0.15;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1" />
+    <use
+       height="100%"
+       width="100%"
+       transform="translate(43.089283)"
+       id="use993"
+       xlink:href="#path983"
+       y="0"
+       x="0" />
+    <use
+       height="100%"
+       width="100%"
+       transform="translate(43.124888)"
+       id="use995"
+       xlink:href="#use993"
+       y="0"
+       x="0" />
+    <rect
+       style="fill:#afe9dd;fill-opacity:1;stroke:none;stroke-width:0.575785"
+       id="use1005"
+       width="42.919216"
+       height="5.2952776"
+       x="49.642921"
+       y="93.224388" />
+    <text
+       id="text1009"
+       y="64.790916"
+       x="35.045712"
+       style="font-size:2.64583px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="font-size:2.64583px;fill:#330080;stroke-width:0.264583"
+         y="64.790916"
+         x="35.045712"
+         id="tspan1007">git add</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.64583px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="75.054489"
+       y="64.979904"
+       id="text1013"><tspan
+         id="tspan1011"
+         x="75.054489"
+         y="64.979904"
+         style="font-size:2.64583px;fill:#330080;stroke-width:0.264583">git commit</tspan></text>
+    <text
+       id="text1017"
+       y="64.979904"
+       x="120.35493"
+       style="font-size:2.64583px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="font-size:2.64583px;fill:#330080;stroke-width:0.264583"
+         y="64.979904"
+         x="120.35493"
+         id="tspan1015">git push</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.64583px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="57.988846"
+       y="96.956696"
+       id="text1029"><tspan
+         id="tspan1027"
+         x="57.988846"
+         y="96.956696"
+         style="font-size:2.64583px;fill:#330080;stroke-width:0.264583">git checkout</tspan></text>
+    <use
+       x="0"
+       y="0"
+       xlink:href="#use1047"
+       id="use920"
+       transform="translate(-86.273065,-23.529023)"
+       width="100%"
+       height="100%" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.64583px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="37.58477"
+       y="84.167953"
+       id="text1037"><tspan
+         id="tspan1035"
+         x="37.58477"
+         y="84.167953"
+         style="font-size:2.64583px;fill:#330080;stroke-width:0.264583">git rm</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.7625px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;stroke-width:0.264583"
+       x="105.68855"
+       y="39.766735"
+       id="text1041"><tspan
+         x="105.68855"
+         y="39.766735"
+         style="font-size:4.7625px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         id="tspan1039">/project/.git</tspan></text>
+    <text
+       id="text1045"
+       y="39.766735"
+       x="17.75688"
+       style="font-size:4.7625px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         id="tspan1043"
+         style="font-size:4.7625px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         y="39.766735"
+         x="17.75688">/project</tspan></text>
+    <path
+       style="font-variation-settings:normal;vector-effect:none;fill:#afe9dd;fill-opacity:1;stroke:none;stroke-width:0.15;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000"
+       d="m 135.92479,104.03799 h -13.87782 v -2.63913 l -4.74899,5.28022 4.74899,5.30642 v -2.65582 h 13.86601 z"
+       id="use1047" />
+    <text
+       id="text1051"
+       y="107.34499"
+       x="123.32203"
+       style="font-size:2.64583px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="font-size:2.64583px;fill:#330080;stroke-width:0.264583"
+         y="107.34499"
+         x="123.32203"
+         id="tspan1049">git fetch</tspan></text>
+    <rect
+       y="114.90494"
+       x="49.642921"
+       height="5.2952776"
+       width="86.083244"
+       id="rect1055"
+       style="fill:#afe9dd;fill-opacity:1;stroke:none;stroke-width:0.815443" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.64583px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       x="80.286263"
+       y="118.47425"
+       id="text1021"><tspan
+         id="tspan1019"
+         x="80.286263"
+         y="118.47425"
+         style="font-size:2.64583px;fill:#330080;stroke-width:0.264583">git pull</tspan></text>
+    <rect
+       y="104.0534"
+       x="49.642921"
+       height="5.2952776"
+       width="42.919216"
+       id="rect910"
+       style="fill:#afe9dd;fill-opacity:1;stroke:none;stroke-width:0.575785" />
+    <text
+       id="text914"
+       y="107.7857"
+       x="57.988846"
+       style="font-size:2.64583px;line-height:1.25;font-family:Verdana;-inkscape-font-specification:Verdana;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
+       xml:space="preserve"><tspan
+         style="font-size:2.64583px;fill:#330080;stroke-width:0.264583"
+         y="107.7857"
+         x="57.988846"
+         id="tspan912">git merge</tspan></text>
+    <use
+       x="0"
+       y="0"
+       xlink:href="#use1047"
+       id="use922"
+       transform="translate(-86.206247,-10.804164)"
+       width="100%"
+       height="100%" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#use1047"
+       id="use924"
+       transform="translate(-86.206247,0.0281239)"
+       width="100%"
+       height="100%" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#use1047"
+       id="use926"
+       transform="translate(-86.190404,10.870595)"
+       width="100%"
+       height="100%" />
+  </g>
+</svg>

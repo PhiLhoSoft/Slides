@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Initiation à Git</title>
+
+		<meta name="description" content="Une introduction à Git et ses fonctionnalités essentielles">
+		<meta name="author" content="Philippe Lhoste">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../_Reveal-4/dist/reveal.css">
+		<link rel="stylesheet" href="../_Highlight-custom/sky2.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../_Highlight-custom/github.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+# Initiation à Git
+</script></section>
+
+				<section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+## Qu'est-ce que Git ?
+
+Git est un outil permettant de garder l'historique de fichiers amenés à évoluer dans le temps.
+
+C'est ce qu'on appelle un gestionnaire de versions (VCS = _version control software_ = logiciel de contrôle de versions).
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Processus
+
+- Initialisation sur un dossier de travail ;
+- Exclusion de fichiers / dossiers à ne pas suivre ;
+- "Photographie" de l'état initial.
+
+Cela créé un dépôt (_repository_).
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Processus (suite)
+
+- Travail sur les fichiers ;
+- Arrivée sur un état (stable, en général) à conserver ;
+- On fait un _commit_ ; Git va :
+  - inspecter le dossier, lister les modification de fichiers ;
+  - enregistrer les modifications, les nouveaux fichiers, les suppressions de fichiers ;
+  - pour les textes, seuls les changements sont enregistrés : modifications, ajouts, suppressions.
+
+=== Remarques :
+J'utilise le terme anglais _commit_, usuel et concis.<br>
+Littéralement, _to commit_ = s'engager. L'opération peut être décrite comme "figer l'état des fichiers" à un instant donné.
+
+L'état n'a pas forcément besoin d'être "stable", on peut faire un commit temporaire avant de se lancer dans un changement majeur.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Note
+
+Git n'est pas qu'un VCS, c'est un DVCS, où le D indique qu'il est distribué : il permet de partager les dépôts, les historiques, via un réseau (Internet en général), permettant un travail d'équipe efficace.
+</script></section>
+
+				</section>
+
+				<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+				## Les concepts fondamentaux
+				</script></section>
+
+				<section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Zones
+
+Git distingue des "zones" de fichiers.
+
+- Espace de travail (_working directory_) : dossier (et sous-dossiers) où on modifie les fichiers.
+- Zone de transit (_staging area_ aussi appelée _index_) où on met tout ou partie des fichiers modifiés.
+- Dépôt (_repository_) : zone où sont enregistrés les changements. Dans un dossier nommé `.git`.
+- Dépôt distant (_remote repository_) sur un serveur spécialisé.
+
+=== Remarques :
+La zone de transit permet de sélectionner les changements qu'on veut mettre dans un commit.<br>
+Par exemple, on peut avoir fait deux jeux de modifications sur le projet, et on veut les séparer dans l'historique.<br>
+On met le 1er jeu dans cette zone, on fait le commit, et on recommence pour le 2e jeu.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+#### Opérations sur les zones
+
+- Espace de travail vers zone de transit : commande `git add`<br>
+  Marque les changements qui nous intéressent, prend une liste de fichiers et dossiers (le contenu des dossiers est ajouté récursivement).<br>
+  On peut faire le transfert inverse avec `git rm`.
+- Zone de transit vers dépôt : commande `git commit` avec un message de commit, décrivant le travail effectué.
+- Dépôt local vers dépôt distant : commande `git push` pour envoyer sur le dépôt distant, `git pull` (ou `git fetch`) pour récupérer.
+
+=== Remarques :
+Plus de détails sur les commandes plus tard.
+</script></section>
+
+<section>
+<h4>Zones de Git</h4>
+
+<img
+	src="Git-areas--plain.svg"
+	alt="Les zones de Git - Cycle de vie"
+>
+</section>
+
+				</section>
+
+				<section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Historique
+
+Le but de tout ça est de garder trace de l'évolution du projet :
+- voir quand on a fait une modification donnée ;
+- garder un état livré, pour analyser / corriger un bug ;
+- pouvoir revenir en arrière, dans un état antérieur (voire annuler les derniers changements) ;
+- ou si on a supprimé ou changé quelque chose qu'on veut récupérer ;
+- etc.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+#### Historique (suite)
+
+La commande `git log` permet de voir l'historique en listant les _commits_.
+
+La commande `git checkout` permet, entre autres, de modifier l'espace de travail pour revenir à un état antérieur.
+Bien sûr, on peut aussi revenir à l'état courant.
+</script></section>
+
+				</section>
+
+				<section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Branches
+
+Le concept de branche est flexible et puissant : il permet d'avoir des versions parallèles du projet, indépendantes.
+
+Le projet vit sur une branche principale, appelée _master_ (maître).
+
+On créé une branche depuis un _commit_ donné, en lui donnant un nom. Quand on se met dessus, on a l'état du projet dudit commit.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Branches (suite)
+
+Tous les _commits_ faits sur cette branche sont isolés des autres branches.
+
+On peut donc décrire une branche comme une série de _commits_ autonomes, n'affectant pas les autres branches.
+
+On peut supprimer une branche abandonnée et les autres branches (dont la branche maître) restent intactes.
+
+=== Remarques :
+Les branches sont généralement faites depuis _master_, mais on peut aussi en faire depuis une autre branche.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Branches (suite)
+
+On peut facilement basculer d'une branche à une autre, et revenir, c'est rapide et sûr.
+
+Pour travailler sur une fonctionnalité ou un correctif, on créé une nouvelle branche, généralement depuis _master_.<br>
+Le codeur peut abandonner provisoirement un travail long sur une telle branche, et faire une nouvelle branche pour corriger un bug urgent.
+Le travail en cours n'est pas affecté et l'attend.
+
+Chaque développeur travaille sur sa propre branche, ce qui évite d'interférer avec le travail des autres.
+
+=== Remarques :
+La branche de correction / évolution part généralement depuis la dernière version de _master_, ou depuis une branche de maintenance.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Branches - intégration
+
+Quand le travail est fini, on intègre les changements faits dans la branche dans _master_.
+Cela s'appelle une fusion (_merge_) des branches.
+
+Si deux développeurs ont travaillé sur le même fichier, il peut y avoir des conflits (modifications au même endroit) qui peuvent être résolus de façon efficace.
+
+On peut aussi faire des branches pour marquer un point dans l'histoire du projet, une version stable, de référence, livrée, etc.<br>
+Cette branche peut évoluer (pour des correctifs) : ainsi, on garde les fonctionnalités du moment, sans figer le logiciel. Elle ne sera jamais mergée.
+</script></section>
+
+<section>
+<h4>Branches, schéma</h4>
+
+<img
+	src="Git-branches--plain.svg"
+	alt="Les branches de Git"
+>
+</section>
+
+<section>
+<h4>Branches, exemple</h4>
+
+<img
+	src="Git-branches-exemple.png"
+	alt="Exemple de branches de Git"
+>
+</section>
+
+				</section>
+
+				<section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Pratique
+
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+#### Pratique (suite)
+
+</script></section>
+
+</section>
+
+				<section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+## Test, skip
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+Parler du stash.
+
+### Test code, ignore
+
+```
+const aProtoObject = {},
+	handler = x => x,
+	other = 'a property',
+	value = 42;
+const o =
+{
+	// define prototype of this object
+	__proto__: aProtoObject,
+	// same as handler: handler
+	handler,
+	other,
+	// method calling super object
+	toString() { return 'o & '  + super.toString(); },
+	// illustrate lexical this
+	showInfo() { return `-- ${this.other} --` },
+	// dynamic property name
+	[ `prefix_${value}` ]: value
+};
+o.showFoo()
+```
+</script></section>
+
+				</section>
+
+				<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+## Conclusion
+
+Blabla
+				</script></section>
+
+				<section>
+					<h1>That's All Folks!</h1>
+					<h3>by Philippe Lhoste</h3>
+				</section>
+
+				<section>
+<section data-markdown><script type="text/template">
+Author: Philippe Lhoste &lt;PhiLho(a)GMX.net&gt;<br>
+https://github.com/PhiLhoSoft
+
+Copyright (c) 2022 Philippe Lhoste / PhiLhoSoft
+</script></section>
+				</section>
+
+			</div>
+<br  />
+		</div>
+
+
+		<script src="../_Reveal-4/dist/reveal.js"></script>
+		<script src="../_Reveal-4/plugin/markdown/markdown.js"></script>
+		<script src="../_Reveal-4/plugin/zoom/zoom.js"></script>
+		<script src="../_Reveal-4/plugin/notes/notes.js"></script>
+		<script src="../_Highlight-custom/highlight.js"></script>
+		<script src="../_Highlight-custom/javascript.js"></script>
+
+		<script>
+
+			Reveal.initialize({
+				// width: 1200,
+				// height: 700,
+
+				history: true,
+
+				plugins: [ RevealMarkdown, RevealZoom, RevealNotes ]
+			});
+			hljs.initHighlightingOnLoad();
+		</script>
+
+	</body>
+</html>
