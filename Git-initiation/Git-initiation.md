@@ -64,11 +64,12 @@ On peut dire à Git d'ignorer ces fichiers, en mettant leur nom ou chemin dans u
 
 Si on veut travailler sur un projet existant, hébergé sur un serveur (GitHub, GitLab, etc.), on doit en faire un clone sur l'ordinateur local : `git clone git@git-manager.io:organization-name/project-name.git`. Cela va créer un dossier `project-name` dans le répertoire courant.
 
-C'est la syntaxe SSH, on peut aussi utiliser la syntaxe HTTPS : `git clone https://git-manager.io/organization-name/project-name.git`.
-
 Il faut avoir un compte sur le serveur et être connecté pour que ça fonctionne.
 De plus, il faut générer et récupérer une clé SSH et la mettre dans sa configuration utilisateur.
 Sous Windows, il faut utiliser l'outil Pageant (faisant partie de l'outil PuTTY) pour gérer la liaison SSH.
+
+C'est la syntaxe SSH, on peut aussi utiliser la syntaxe HTTPS : `git clone https://git-manager.io/organization-name/project-name.git`.
+Avec ça, on peut cloner sans avoir de compte, si le serveur est public.
 
 ## Voir l'état du dépôt
 

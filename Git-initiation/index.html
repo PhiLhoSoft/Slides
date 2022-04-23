@@ -28,9 +28,15 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 
-<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
-# Initiation à Git
-</script></section>
+<section>
+	<h1>Initiation à Git</h1>
+	<img
+		src="logo-git.png"
+		alt="Logo de Git"
+		style="box-shadow: none; width: 200px;"
+	>
+	<h5>Une introduction à Git<br>et ses fonctionnalités essentielles</h5>
+</section>
 
 				<section>
 
@@ -47,9 +53,14 @@ C'est ce qu'on appelle un gestionnaire de versions (VCS = _version control softw
 
 - Initialisation sur un dossier de travail ;
 - Exclusion de fichiers / dossiers à ne pas suivre ;
-- "Photographie" de l'état initial.
+- "Photographie" de l'état initial (via un _commit_, on voit ça après).
 
 Cela créé un dépôt (_repository_).
+
+=== Remarques :
+Exemples de fichiers à ne pas suivre : des fichiers générés ou téléchargés, faciles à recréer ;
+des fichiers contenant des données sensibles (mot de passe) ;
+des fichiers personnels (réglages de logiciel) ; etc.
 </script></section>
 
 <section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
@@ -58,7 +69,7 @@ Cela créé un dépôt (_repository_).
 - Travail sur les fichiers ;
 - Arrivée sur un état (stable, en général) à conserver ;
 - On fait un _commit_ ; Git va :
-  - inspecter le dossier, lister les modification de fichiers ;
+  - inspecter le dossier, voir les changements de fichiers ;
   - enregistrer les modifications, les nouveaux fichiers, les suppressions de fichiers ;
   - pour les textes, seuls les changements sont enregistrés : modifications, ajouts, suppressions.
 
@@ -66,7 +77,9 @@ Cela créé un dépôt (_repository_).
 J'utilise le terme anglais _commit_, usuel et concis.<br>
 Littéralement, _to commit_ = s'engager. L'opération peut être décrite comme "figer l'état des fichiers" à un instant donné.
 
-L'état n'a pas forcément besoin d'être "stable", on peut faire un commit temporaire avant de se lancer dans un changement majeur.
+L'état n'a pas forcément besoin d'être "stable", on peut faire un _commit_ temporaire avant de se lancer dans un changement majeur.
+
+Git ne voit en fait que les fichiers (et leur chemin) : il ne peut pas enregistrer un dossier vide.
 </script></section>
 
 <section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
@@ -88,15 +101,16 @@ Git n'est pas qu'un VCS, c'est un DVCS, où le D indique qu'il est distribué : 
 
 Git distingue des "zones" de fichiers.
 
-- Espace de travail (_working directory_) : dossier (et sous-dossiers) où on modifie les fichiers.
-- Zone de transit (_staging area_ aussi appelée _index_) où on met tout ou partie des fichiers modifiés.
+- Espace de travail (_working directory_) : dossier (et sous-dossiers) où on travaille sur les fichiers.
+- Zone de transit (_staging area_ aussi appelée _index_) où on met tout ou partie des fichiers changés.
 - Dépôt (_repository_) : zone où sont enregistrés les changements. Dans un dossier nommé `.git`.
 - Dépôt distant (_remote repository_) sur un serveur spécialisé.
 
 === Remarques :
-La zone de transit permet de sélectionner les changements qu'on veut mettre dans un commit.<br>
+Les changements peuvent être des modifications, mais aussi les ajouts et suppressions de fichiers.<br>
+La zone de transit permet de sélectionner les changements qu'on veut mettre dans un _commit_.<br>
 Par exemple, on peut avoir fait deux jeux de modifications sur le projet, et on veut les séparer dans l'historique.<br>
-On met le 1er jeu dans cette zone, on fait le commit, et on recommence pour le 2e jeu.
+On met le 1er jeu dans cette zone, on fait le _commit_, et on recommence pour le 2e jeu.
 </script></section>
 
 <section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
@@ -104,8 +118,8 @@ On met le 1er jeu dans cette zone, on fait le commit, et on recommence pour le 2
 
 - Espace de travail vers zone de transit : commande `git add`<br>
   Marque les changements qui nous intéressent, prend une liste de fichiers et dossiers (le contenu des dossiers est ajouté récursivement).<br>
-  On peut faire le transfert inverse avec `git rm`.
-- Zone de transit vers dépôt : commande `git commit` avec un message de commit, décrivant le travail effectué.
+  On peut faire le transfert inverse avec `git restore --staged` ou `git reset`.
+- Zone de transit vers dépôt : commande `git commit` avec un message de _commit_, décrivant le travail effectué.
 - Dépôt local vers dépôt distant : commande `git push` pour envoyer sur le dépôt distant, `git pull` (ou `git fetch`) pour récupérer.
 
 === Remarques :
@@ -113,7 +127,7 @@ Plus de détails sur les commandes plus tard.
 </script></section>
 
 <section>
-<h4>Zones de Git</h4>
+<h4 id="zones-de-git">Zones de Git</h4>
 
 <img
 	src="Git-areas--plain.svg"
@@ -137,7 +151,7 @@ Le but de tout ça est de garder trace de l'évolution du projet :
 </script></section>
 
 <section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
-#### Historique (suite)
+#### Historique - commandes
 
 La commande `git log` permet de voir l'historique en listant les _commits_.
 
@@ -154,62 +168,76 @@ Bien sûr, on peut aussi revenir à l'état courant.
 
 Le concept de branche est flexible et puissant : il permet d'avoir des versions parallèles du projet, indépendantes.
 
-Le projet vit sur une branche principale, appelée _master_ (maître).
+Le projet vit sur une branche principale, appelée généralement `master` (maître).
 
-On créé une branche depuis un _commit_ donné, en lui donnant un nom. Quand on se met dessus, on a l'état du projet dudit commit.
+=== Remarques :
+Le nom `master` est arbitraire, si on créé un projet sur GitLab par exemple, il créera par défaut une branche `main`.
+(Politiquement correct, on évite master / slave, blacklist / whitelist, etc.)
 </script></section>
 
 <section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
-### Branches (suite)
+### Branches - concept
+
+On créé une branche depuis un _commit_ donné, en lui donnant un nom. Quand on se met dessus, on garde l'état du projet dudit _commit_.
 
 Tous les _commits_ faits sur cette branche sont isolés des autres branches.
 
 On peut donc décrire une branche comme une série de _commits_ autonomes, n'affectant pas les autres branches.
 
-On peut supprimer une branche abandonnée et les autres branches (dont la branche maître) restent intactes.
-
 === Remarques :
-Les branches sont généralement faites depuis _master_, mais on peut aussi en faire depuis une autre branche.
+Les branches sont généralement faites depuis `master`, mais on peut aussi en faire depuis une autre branche.
 </script></section>
 
 <section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
-### Branches (suite)
+### Branches - usage
+
+On peut supprimer une branche abandonnée et les autres branches (dont la branche maître) restent intactes.
 
 On peut facilement basculer d'une branche à une autre, et revenir, c'est rapide et sûr.
 
-Pour travailler sur une fonctionnalité ou un correctif, on créé une nouvelle branche, généralement depuis _master_.<br>
+Pour travailler sur une fonctionnalité ou un correctif, on créé une nouvelle branche, généralement depuis `master`.<br>
 Le codeur peut abandonner provisoirement un travail long sur une telle branche, et faire une nouvelle branche pour corriger un bug urgent.
 Le travail en cours n'est pas affecté et l'attend.
 
 Chaque développeur travaille sur sa propre branche, ce qui évite d'interférer avec le travail des autres.
 
 === Remarques :
-La branche de correction / évolution part généralement depuis la dernière version de _master_, ou depuis une branche de maintenance.
+La branche de correction / évolution part généralement depuis la dernière version de `master`, ou depuis une branche de maintenance.
 </script></section>
 
 <section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
-### Branches - intégration
+#### Branches - intégration
 
-Quand le travail est fini, on intègre les changements faits dans la branche dans _master_.
+Quand le travail est fini, on intègre les changements faits dans la branche dans `master`.
 Cela s'appelle une fusion (_merge_) des branches.
 
 Si deux développeurs ont travaillé sur le même fichier, il peut y avoir des conflits (modifications au même endroit) qui peuvent être résolus de façon efficace.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+#### Branches de maintenance
 
 On peut aussi faire des branches pour marquer un point dans l'histoire du projet, une version stable, de référence, livrée, etc.<br>
 Cette branche peut évoluer (pour des correctifs) : ainsi, on garde les fonctionnalités du moment, sans figer le logiciel. Elle ne sera jamais mergée.
+
+On peut encore faire une branche expérimentale, qui peut devenir la future version principale, ou être abandonnée.
 </script></section>
 
 <section>
-<h4>Branches, schéma</h4>
+<h4 id="branches---schema">Branches - schéma</h4>
 
 <img
 	src="Git-branches--plain.svg"
 	alt="Les branches de Git"
 >
+
+<aside class="notes">
+HEAD est une référence symbolique à la branche active, à son dernier <em>commit</em>. HEAD~1 est une référence au <em>commit</em> précédent, etc.
+</aside>
 </section>
 
 <section>
-<h4>Branches, exemple</h4>
+<h4 id="branches---exemple">Branches - exemple</h4>
 
 <img
 	src="Git-branches-exemple.png"
@@ -221,50 +249,563 @@ Cette branche peut évoluer (pour des correctifs) : ainsi, on garde les fonction
 
 				<section>
 
-<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
-### Pratique
+				<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+				## Pratique
 
+				<div class="subtitle">Installation et configuration de Git.</div>
+				</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Pratique - configuration
+
+Après installation, avant la première utilisation, il faut régler Git sur son ordinateur.
+
+Il faut s'identifier (nom, e-mail), parce que chaque _commit_ indique qui l'a fait.
+On peut aussi indiquer des options de fichier, spécifier un éditeur de texte, les outils de fusion, etc.
+
+Un fichier `.gitconfig` global sera créé à la racine du répertoire utilisateur (par exemple `C:\Users\<your.name>\.gitconfig` sous Windows).
+Il peut aussi y en avoir un par projet.
 </script></section>
 
 <section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
-#### Pratique (suite)
+### Pratique - réglages initiaux
 
+Des commandes permettent de mettre à jour la configuration, comme `git config --global user.email "your.name@example.com"`.
+On peut aussi renseigner `user.name` par exemple, et d'autres réglages (`i18n.filesEncoding "utf-8"` et `core.autocrlf "input"` sont recommandés).
+Ou simplement modifier `.gitconfig` avec un éditeur de texte.
+
+Si on omet `--global`, ça créé une configuration locale au projet où on se trouve, ça permet d'affiner certains réglages.
+
+=== Remarques :
+Exercice 0.
 </script></section>
 
-</section>
+				</section>
 
 				<section>
 
+				<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+				## Initialisation du projet
+
+				<div class="subtitle">Avant de commencer à travailler.</div>
+				</script></section>
+
 <section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
-## Test, skip
+### Cloner ou initialiser
+
+On peut soit travailler sur un dépôt existant, soit créer le sien.
+
+Dans le premier cas, on créé un clone du dépôt, avec la commande `git clone git@git-manager.io:organization-name/project-name.git` par exemple.
+<span style="font-size: 70%; font-style: italic; color: darkblue;">`git-manager.io`, `organization-name` et `project-name` sont les parties variables de l'URL.</span>
+Ça créé un répertoire et une copie des fichiers du dépôt.
+
+Dans le deuxième cas, on initialise le dépôt local avec la commande `git init`. Ça créé un répertoire `.git` dans le dossier courant.
+
+
+=== Remarques :
+`git-manager.net` est l'URL du serveur abritant le dépôt distant.
+Elle est suivie par le nom de l'organisation (ou de l'utilisateur) sur le serveur, et le nom du projet.<br>
+Exercice 1.
 </script></section>
 
 <section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
-Parler du stash.
+#### Cloner
 
-### Test code, ignore
+On peut spécifier un nom de répertoire : `git clone git@git-manager.io:organization-name/project-name.git folder-name`.
+
+Le répertoire s'appellera `folder-name` au lieu de `project-name`, sauf si le nom de dossier est `.`. Dans ce cas, pas de répertoire créé, les fichiers sont mis dans le répertoire courant qui doit être vide.
+
+Il faut avoir un compte sur le serveur, y avoir ajouté une clé SSH et être connecté pour que ça fonctionne.
+
+Note : une variante utilise la syntaxe https : `git clone https://git-manager.io/organization-name/project-name.git`. Avantage : pas besoin d'avoir un compte sur le serveur.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+#### Initialiser
+
+Après l'initialisation, il peut être nécessaire de créer un fichier `.gitignore` pour indiquer à Git d'ignorer les fichiers générés (eg. par compilation) ou téléchargés (`node_modules`).
+
+On peut spécifier le projet distant (à créer vide sur le serveur) avec la commande `git remote add origin git@git-manager.io:organization-name/project-name.git`.
+
+Pour pousser une branche pour la première fois, il faut faire `git push -u origin nom-branche` (y compris pour `master`).<br>
+Par la suite, un simple `git push` suffit.
+
+=== Remarques :
+`origin` est le nom du remote. Il est quasiment toujours unique et par convention, on l'appelle généralement _origin_.<br>
+`git push -u` indique sur quel _upstream_ (`-u` est la version courte de `--set-upstream`) on pousse la branche en cours vers la branche distante.
+On n'a besoin de préciser l'_upstream_ qu'une fois, il est mémorisé pour cette branche.
+</script></section>
+
+				</section>
+
+				<section>
+
+				<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+				## État et historique
+
+				<div class="subtitle">Savoir où on en est.</div>
+				</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Voir l'état du dépôt
+
+```sh
+> git status
+On branch The_branch_name
+Your branch is up to date with 'origin/The_branch_name'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   src/app/shared/list/modified-file.ts
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    src/app/shared/list/deleted-file.ts
+        modified:   src/app/shared/list/other-modified-file.ts
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        src/app/shared/list/new-file.ts
+```
+
+=== Remarques :
+À noter qu'en général, les commandes Git sont lancées depuis la racine du dossier de projet. Après avoir cloné un projet, on doit se déplacer dedans (`cd project-name`).
+
+Comme vous pouvez voir, la commande `git status` donne plein d'informations précieuses sur l'état courant du dépôt.<br>
+On a, dans l'ordre, les fichiers dans l'index, prêts pour le _commit_, ceux changés, pas encore dans l'index, et un nouveau fichier pas encore connu de Git.<br>
+Chose pratique : il rappelle les commandes courantes qui sont possibles.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### L'état du dépôt en un coup d'œil
+
+On peut avoir un listing moins verbeux, avec information sur la branche en cours :
+
+```sh
+> git status --short --branch
+## The_branch_name
+ D src/app/shared/list/deleted-file.ts
+M  src/app/shared/list/modified-file.ts
+ M src/app/shared/list/other-modified-file.ts
+?? src/app/shared/list/new-file.ts
+```
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Voir l'historique
+
+La commande `git log` permet de voir les derniers _commits_, par pages.
 
 ```
-const aProtoObject = {},
-	handler = x => x,
-	other = 'a property',
-	value = 42;
-const o =
-{
-	// define prototype of this object
-	__proto__: aProtoObject,
-	// same as handler: handler
-	handler,
-	other,
-	// method calling super object
-	toString() { return 'o & '  + super.toString(); },
-	// illustrate lexical this
-	showInfo() { return `-- ${this.other} --` },
-	// dynamic property name
-	[ `prefix_${value}` ]: value
-};
-o.showFoo()
+commit 47d652c11e9fceb98c6b169fbf6f6f48751aa901
+Author: Philippe Lhoste <p.lhoste@example.com>
+Date:   Thu Apr 7 10:30:32 2022 +0200
+
+    feat(root): create content in root
+
+commit 873de9d42ec149ea61c2923241f5f99e5817912e
+Author: Philippe Lhoste <p.lhoste@example.com>
+Date:   Thu Apr 7 10:32:05 2022 +0200
+
+    feat(root): add content to index
 ```
+
+La commande `git log --oneline --graph` montre l'historique de façon plus synthétique.
+
+```
+*   d8e50e4 (HEAD -> master, origin/master, origin/HEAD) Merge branch 'improve-index' into 'master'
+|\
+| * 47d652c feat(root): create content in root
+|/
+* 873de9d feat(root): add content to index
+```
+
+=== Remarques :
+Taper sur la barre d'espace pour voir la suite, sur la touche q pour quitter ce listing.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Code de hachage
+
+Dans le résultat de `git log`, on voit des lignes comme `commit 47d652c11e9fceb98c6b169fbf6f6f48751aa901`.
+
+Le long code correspond à un hachage (_hash code_) des fichiers modifiés, et permet d'identifier de façon unique le _commit_. C'est utilisé dans certaines commandes pour les identifier.
+
+On utilise aussi une version abrégée, qu'on a vu dans la version `--oneline` : `47d652c`. Ça correspond au début de hash, et ça suffit généralement à identifier un _commit_.
+
+=== Remarques :
+Exercice 2 (première partie).
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Outils visuels
+
+Ce tutoriel porte sur Git, l'outil en ligne de commande. Je présente donc les commandes, qu'il est bon de connaître.
+
+Mais je recommande d'utiliser une interface utilisateur graphique, qui permet une meilleure visualisation de l'historique (_commits_, branches, différences) et facilite les opérations.
+
+Il y a de nombreux logiciels de ce type, dont beaucoup sont gratuits. À commencer Git lui-même, avec la commande `git gui`, primitive mais pratique.<br>
+Ou Visual Studio Code qui a une gestion basique de Git qui peut être améliorée par des extensions.
+
+Pour ma part, j'utilise [Git Extensions](https://gitextensions.github.io/), outil Windows mais qui peut être utilisé sur Linux avec Mono.<br>
+
+=== Remarques :
+</script></section>
+
+				</section>
+
+				<section>
+
+				<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+				## Faire un _commit_
+
+				<div class="subtitle">Bien préparer ses <em>commits</em>,<br>pour laisser un historique propre et facile à explorer.</div>
+				</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Préparation - mise dans l'index
+
+- Mettre dans la zone de transit (index) les fichiers dont on veut figer l'état avec `git add` suivi d'une liste de fichiers ou dossiers. Donc `git add .` (`.` signifiant "le dossier où je suis") peut suffire.
+- On peut retirer des fichiers de l'index avec la commande `git restore --staged <chemin du fichier>` ou  `git reset <chemin du fichier>`. Sans nom de fichier, la dernière commande déplace tous les fichiers hors de l'index, dans la zone de travail.
+- Pour supprimer les modifications sur un fichier, on peut utiliser la commande `git restore --worktree <chemin du fichier>` ou alternativement, `git checkout -- <chemin du fichier>`.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Préparation - inspection
+
+On utilise `git status` pour s'assurer que l'on a bien tous les fichiers que l'on veut.
+
+Il est recommandé d'inspecter les différences introduites une dernière fois avant de faire le _commit_, avec `git diff`.
+Mais c'est plus facile avec une interface graphique.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Message de _commit_
+
+On fait le _commit_ avec la commande… `git commit`. Git exige un message associé à ce _commit_. C'est important pour savoir ce qui a été fait sur le projet. C'est pour cela qu'il faut l'écrire avec soin.
+
+Le message peut être sur une ligne, et précisé avec la commande : `"feat(scope): do something"`.<br>
+Sinon, Git va ouvrir un éditeur de texte pour permettre la saisie du message.<br>
+Le défaut peut être déroutant, on peut préciser quel éditeur on veut, par exemple `git config --global core.editor "code --wait"`.<br>
+Bien sûr, la partie entre guillemets varie selon l'éditeur voulu.
+
+=== Remarques :
+Exercice 2 (deuxième partie).
+</script></section>
+
+				</section>
+
+				<section>
+
+				<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+				## Rédiger les messages de _commit_
+
+				Les messages apparaissant dans l'historique, il y a des règles tacites (conventions) à respecter, pour rester lisible et cohérent.
+
+				Voir par exemple [Git : le message de commit parfait](https://blog.stack-labs.com/code/git_perfect_commit_message/) pour quelques règles de bon sens.
+				</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Structure d'un message de _commit_
+
+Les messages de _commit_ ont au minimum un sujet en une ligne, expliquant succinctement le but du _commit_. Il doit rester court (50-100 caractères max.) parce que c'est ce sujet qui est listée dans les _logs_. C'est ce qu'on peut spécifier avec l'option `-m`.
+
+Optionnellement, dans l'éditeur, on saute une ligne blanche et on décrit plus en détails les changements.<br>
+On peut y mettre les choix techniques, le détail par fichier / fonctionnalité / bug corrigé, etc.
+
+Et à la fin, on peut donner des références, comme le numéro du ticket corrigé, s'il y a lieu.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Conventions de message
+
+Bien sûr, respecter la langue du projet (souvent l'anglais, par convention).
+
+Une convention très répandue est de commencer un message de _commit_ par un verbe à l'impératif : "_Fix this_", "_Update that_", "_Remove this_", "_Refactor these_", "_Move the files_", etc.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### _Conventional commit_
+
+Une pratique qui se répand est d'utiliser un format appelé "[_conventional commit_](https://www.conventionalcommits.org/)", qui permet de classer les _commits_ en catégories et portées.<br>
+On garde le message commençant par un verbe, mais on le préfixe par une catégorie : `fix` ou `feat`, selon qu'on corrige un bug (_fix_) ou qu'on ajoute une fonctionnalité (_feature_).
+
+On peut avoir d'autres catégories, les plus courantes sont : `chore` (tâche de maintenance, comme mettre à jour les dépendances), `refactor` (amélioration du code sans impact fonctionnel), `docs` (amélioration de la documentation, des commentaires), `test` (ajout / modification de tests), etc.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### _Conventional commit_ - catégorie et portée
+
+Les catégories `fix` et `feat` peuvent être listées dans un fichier `CHANGELOG` (journal des modifications) : elles ont un impact sur les utilisateurs, et peuvent être mentionnées dans une livraison de version (_release_), etc.
+
+Les autres ne sont pas (normalement) visibles par l'utilisateur final, et ne sont pas listées, mais sont intéressantes pour les développeurs pour voir en un coup d'œil le genre de modification effectuée.
+
+La catégorie peut optionnellement être suivie par la portée de la modification, entre parenthèses, indiquant succinctement la fonctionnalité impactée, l'endroit du code qui a été touché.
+
+=== Remarques :
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### _Conventional commit_ - exemples
+
+Par exemple, on peut avoir : _fix(share): correct behavior of share option_, _feat(file-manager): allow to rename a file_, etc.
+
+La portée est listée dans le _changelog_ qui regroupe, sous une version, les corrections et les nouvelles fonctionnalités, et pour chaque section, les groupe par portée.
+
+À noter que le changelog est généré par un outil (par exemple conventional-changelog sur NPM), ce n'est pas Git qui le créé.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### _Conventional commit_ - exemple de _changelog_
+
+Le rendu dans le _changelog_ peut ressembler à :
+<div style="font-size: 50%; text-align: left; margin-top: -10px;">
+<div style="font-size: 130%; font-weight: bold; text-decoration: underline;">1.3.0 (2021-04-30)</div>
+<div style="font-size: 110%; margin-top: 8px; font-weight: bold;">Bug Fixes</div>
+
+* **access:** add MULTILINK right
+* **applications:** manage the Outlook plugin as sole application
+* **profile:** fix focus bug in modal
+* **profile:** improve management of empty values
+* [...]
+
+<div style="font-size: 110%; font-weight: bold;">Features</div>
+
+* **actions:** show long action if needed
+* **profile:** manage profile data input
+* **profile:** show profile information in folder details
+* [...]
+
+</div>
+</script></section>
+
+				</section>
+
+				<section>
+
+				<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+				## Gérer les branches
+
+				Comme on l'a vu, on peut créer une branche pour isoler des modifications de la branche principale (`master`), et pour travailler en parallèle des autres développeurs du dépôt. À faire avant le premier _commit_ !
+				</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Créer une branche
+
+Commande : `git branch "nom_de_la_branche"`.
+
+Après création, on peut basculer sur cette branche, les _commits_ se font toujours dans la branche active : `git checkout "nom_de_la_branche"`.<br>
+Pour mémoire, `git status` donne le nom de la branche active.
+
+Il est possible de combiner création et basculement, avec `git checkout -b "nom_de_la_branche"`.
+
+=== Remarques :
+Exercice 3.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Supprimer une branche
+
+On peut supprimer une branche avec `git branch -d "nom_de_la_branche"`.
+
+S'il y a des _commits_ sur la branche, il faudra forcer la suppression avec l'option `-f` (ou `--force`).
+
+On ne peut pas supprimer la branche active, il faut basculer sur une autre branche auparavant.
+
+=== Remarques :
+En général, on supprime les branches après les avoir fusionnées.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Fusionner une branche
+
+On peut fusionner une branche sur master (ou sur la branche mère) avec la commande `git merge <nom de branche>` faite depuis la branche cible.
+
+Note : on fait généralement une _merge request_ (demande de fusion) sur le dépôt distant (comme GitLab), un contributeur au projet examine les changements, peut sugggérer des modifications, et quand tout est OK, lance la fusion depuis le dépôt.<br>
+À moins de travailler seul, on fusionne rarement les branches en local.
+
+=== Remarques :
+Exercice 4.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Copier des modifications entre branches
+
+On peut copier un changement (_commit_) d'une branche à l'autre. C'est désigné par le terme poétique _cherry-pick_ (cueillir des cerises).
+
+Un cas d'usage courant est de copier les corrections de _master_ vers une branche de maintenance, où on ne veut que les correctifs importants, pas de nouvelles fonctionnalités.
+
+Exemple de commande : `git cherry-pick <hash de commit>` va copier le _commit_ dont on donne le _hash_ sur la branche courante, créant un _commit_ identique automatiquement. On peut ajouter l'option `--no-commit` si on compte faire des modifications avant de faire le _commit_.
+</script></section>
+
+				</section>
+
+
+				<section>
+
+				<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+				## Sauver temporairement le travail
+
+				<div class="subtitle">Enregistrer son travail pour faire autre chose.</div>
+				</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Planquer (_stash_) les changements
+
+On doit parfois passer d'une tâche à l'autre, sans avoir fini la première.<br>
+Faire un _commit_ d'un travail en cours, qui peut-être n'est pas encore valide (compilable, formatté, etc.) n'est pas forcément souhaitable.
+
+Une commande, `git stash` (alias de `git stash push`), permet de mettre les modifications dans une pile, et de nettoyer l'espace de travail qui se retrouve sans modification.
+
+Les fichiers nouveaux ne sont pas traités, à moins de spécifier l'option `-u` (ou `--include-untracked`).
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### La pile de sauvegarde
+
+Si on fait d'autres changements et qu'on appelle `git stash` à nouveau, ça créé une autre entrée dans la pile.
+
+`git stash show` montre les derniers fichiers poussés dans la pile. `git stash show 1` montre l'entrée précédente, etc.
+
+`git stash pop` dépile la dernière entrée de la pile : ses changements sont appliqués et l'entrée est supprimée de la pile (sauf en cas de conflit). `git stash pop 1` permet de dépiler la 2e entrée sans toucher à la 1re.
+
+On peut supprimer une entrée de la pile avec `git stash drop [numéro de stash]`
+</script></section>
+
+				</section>
+
+
+				<section>
+
+				<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+				## Corriger l'historique
+
+				<div class="subtitle">Parfois, on fait des erreurs ou on oublie des choses, etc.<br>
+				On peut revenir en arrière et corriger le passé…</div>
+				</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Corriger (_amend_) le dernier _commit_
+
+On peut faire un _commit_ temporaire (mais `stash` est généralement préférable) ou avoir oublié un fichier ou besoin d'ajouter un petit changement au _commit_ qu'on vient de faire.
+
+Plutôt que de faire un _commit_ supplémentaire, apportant peu de changements, faisant du "bruit" dans l'historique, on peut corriger (_to amend_) le dernier _commit_. Il suffit d'ajouter l'option `--amend` à la commande. On peut ajouter `--no-edit` si on n'a pas besoin de modifier le message.
+
+À noter que ça permet aussi de juste corriger le message de _commit_ (oubli, faute…).
+
+=== Remarques :
+Si le _commit_ a déjà été poussé sur le dépôt distant, on ne peut pousser un _amend commit_ qu'avec l'option `--force-with-lease`, et seulement si le dépôt le permet. À utiliser avec précautions.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Corriger un ancien _commit_
+
+Parfois, il faut corriger un _commit_ plus ancien. Par exemple, j'ai fait un changement sur les dépendances du projet au début de ma branche, et après plusieurs _commits_, je vois qu'il faut changer une autre dépendance.
+
+Plutôt que faire un nouveau _commit_, je préfère regrouper ce type de changement.
+
+Pour faire ça, je "rembobine" les changements jusqu'au _commit_ concerné, je fais les corrections (avec un _amend commit_) et je reviens à l'état initial.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Rebaser en mode interactif
+
+Le rembobinage se fait avec la commande `git rebase -i <cible>`.<br>
+La cible peut être un code de _commit_, ou un indice par rapport à `HEAD` (par exemple `HEAD~3`).
+
+On cible toujours le _commit_ précédant celui qu'on veut corriger, ça liste les _commits_ (du plus ancien au plus récent) entre ce _commit_ et le dernier dans un éditeur de texte. Par exemple :
+```
+pick f788166 chore: update configuration
+pick c0159a5 feat: add modal
+pick 61dfa03 fix: improve the algorithm on corner cases
+```
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Modifier dans un rebase interactif
+
+Dans ce fichier, Git rappelle les opérations possibles. C'est puissant, et donc dangereux…<br>
+Modifier le verbe par défaut (`pick`) pour appliquer l'opération sur le ou les _commits_ concernés.
+
+L'opération la plus courante est `edit`. Dans ce cas, après validation, on reste dans l'état du _commit_, qu'on peut corriger (avec _amend_). On peut alors passer à la modification suivante (s'il y a) avec la commande `git rebase --continue`.
+
+On peut aussi supprimer entièrement un _commit_ (`drop`), fusionner deux _commits_ (`squash`), changer le message (`reword`), etc.
+
+=== Remarques :
+Conseil : pour les commandes pas évidentes, se faire la main sur un petit dépôt de test pour être sûr de ce qu'on fait… Voir les exercices, notamment.
+
+Exercice 5.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Supprimer des modifications
+
+`git reset --soft HEAD~1` supprime le dernier _commit_ (ou plus) en mettant les modifications correspondantes dans l'index.
+
+`git reset --hard <commit hash / HEAD ref.>` annule toutes les modifications de l'index et de l'espace de travail jusqu'au _commit_ indiqué.<br>
+Attention, tous les changements effectués depuis le commit indiqué sont perdus !
+
+`git reset --hard origin/master` annule toutes les modifications, mettant le code à jour par rapport à la branche distante.
+
+=== Remarques :
+`git reflog` permet de rattraper ces modifications (si dans un _commit_), mais c'est un usage avancé.
+
+Exercice 6.
+</script></section>
+
+				</section>
+
+
+				<section>
+
+				<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+				## Travailler en équipe
+
+				<div class="subtitle">Quand d'autres personnes travaillent sur le projet, il faut récupérer leurs changements.</div>
+				</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Mettre à jour `master`
+
+Quand vous êtes sur `master`, le meilleur moyen pour se mettre à jour des derniers changements sur cette branche est de faire `git pull --rebase`.
+
+Ça récupère les changements dans `origin/master`, et ça "rejoue" les _commits_ pour mettre à jour le `master` local au niveau du dépôt distant.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Mettre à jour sa branche par rapport à `master`
+
+Quand on développe sur une branche, `master` peut évoluer entre temps. On peut vouloir mettre à jour sa branche pour suivre les dernières évolutions : ça permet de les utiliser, ou au moins à éviter des conflits futurs, voire de résoudre tout de suite des conflits existants, avant qu'ils ne deviennent plus complexes.
+
+Pour cela, il faut se mettre sur master, et le mettre à jour, comme indiqué dans la diapo précédente.<br>
+Puis, revenir sur sa branche, et la rebaser sur master, avec la commande `git rebase master`.
+
+=== Remarques :
+Certains font un _commit_ de _merge_ à la place du rebasement, mais j'estime que ça créé du "bruit", des infos supplémentaires inutiles dans l'historique du projet.
+
+Exercice 7.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Récupérer toutes les modifications
+
+Si des branches ont été créées et poussées sur le dépôt distant, on peut les récupérer avec `git fetch --all`.
+
+Elles sont affichées sous la forme `origin/branch_name`. Si on bascule sur une de ces branches, il faudra la créer en local, généralement en gardant le même nom.
+</script></section>
+
+<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
+### Gérer les conflits
+
+Tant que les développeurs travaillent sur des fichiers différents, tout va bien, en général. Au pire, après mise à jour, il faut adapter le code aux changements effectués ailleurs.
+
+Mais si on modifie un fichier, des lignes qui sont aussi modifiées par un autre développeur, qui a poussé avant nous sur le serveur, quand on récupère ses changements, on aura un conflit : on a deux versions différentes pour ces lignes, et il va falloir trancher pour l'une ou l'autre version, ou faire un compromis. Ça s'appelle résoudre un conflit de fusion.
+
+Pour cela, on utilise un outil de fusion (_merge tool_) qui montre votre version, la version de l'autre développeur, et la version antérieure aux deux. On peut alors choisir soit une des deux versions, soit modifier le fichier pour résoudre le conflit.
+
+=== Remarques :
+Exercice 8.
 </script></section>
 
 				</section>
@@ -272,25 +813,24 @@ o.showFoo()
 				<section data-markdown data-separator-notes="^=== Remarques :"><script type="text/template">
 ## Conclusion
 
-Blabla
+Git est un outil puissant, offrant beaucoup de possibilités et plusieurs façons de faire une tâche donnée.
+
+Ce qui peut poser problème aux utilisateurs, et introduire de la confusion.<br>
+Mais l'interface utilisateur s'améliore progressivement, et des solutions standard se dégagent.
+
+Il n'en reste pas moins que pour les opérations courantes, un outil graphique est précieux.<br>
+Mais il est bon de connaître la ligne de commande, qui peut offrir des possibilités pas forcément disponibles dans ces outils.
 				</script></section>
 
 				<section>
-					<h1>That's All Folks!</h1>
-					<h3>by Philippe Lhoste</h3>
-				</section>
+					<div style="font-size: 300%; color: #57A; font-family: Quicksand, sans-serif; font-weight: bold;;">That's all Folks!</div>
+					<img src="That-s-All-Folks.png" height="320px" alt="That's all Folks!">
+					<div style="font-size: 150%; color: #57A; font-family: Quicksand, sans-serif; font-weight: bold;;">by Philippe Lhoste (PhiLhoSoft)</div>
 
-				<section>
-<section data-markdown><script type="text/template">
-Author: Philippe Lhoste &lt;PhiLho(a)GMX.net&gt;<br>
-https://github.com/PhiLhoSoft
-
-Copyright (c) 2022 Philippe Lhoste / PhiLhoSoft
-</script></section>
 				</section>
 
 			</div>
-<br  />
+
 		</div>
 
 
@@ -298,20 +838,28 @@ Copyright (c) 2022 Philippe Lhoste / PhiLhoSoft
 		<script src="../_Reveal-4/plugin/markdown/markdown.js"></script>
 		<script src="../_Reveal-4/plugin/zoom/zoom.js"></script>
 		<script src="../_Reveal-4/plugin/notes/notes.js"></script>
+		<!--
 		<script src="../_Highlight-custom/highlight.js"></script>
 		<script src="../_Highlight-custom/javascript.js"></script>
+		-->
 
 		<script>
-
 			Reveal.initialize({
 				// width: 1200,
 				// height: 700,
 
+				slideNumber: 'c/t',
+				progress: true,
 				history: true,
+
+				// Show the notes on the side of the slides, or below each slide in PDF mode.
+				// Beware, in PDF mode they might mask the main text…
+				// showNotes: true, // To print in PDF, add ?print-pdf to URL on Chrome.
+				pdfSeparateFragments: false,
 
 				plugins: [ RevealMarkdown, RevealZoom, RevealNotes ]
 			});
-			hljs.initHighlightingOnLoad();
+			// hljs.initHighlightingOnLoad();
 		</script>
 
 	</body>

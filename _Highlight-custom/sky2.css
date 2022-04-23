@@ -99,6 +99,11 @@ body
 	font-size: 1em;
 }
 
+.reveal .subtitle {
+	text-align: center;
+	font-style: italic;
+}
+
 .reveal p, .reveal li, .reveal code
 {
 	text-align: left;
@@ -117,6 +122,7 @@ body
 	font-family: monospace;
 	line-height: 1.2em;
 	word-wrap: break-word;
+	padding: 4px;
 	box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
 }
 
@@ -130,7 +136,6 @@ body
 
 .reveal pre code
 {
-	padding: 5px;
 	word-wrap: normal;
 
 	background-color: inherit;
@@ -241,6 +246,7 @@ body
 .reveal .progress
 {
 	background: rgba(0, 0, 0, 0.2);
+	height: 8px;
 }
 
 .reveal .progress span
@@ -258,5 +264,29 @@ body
  *********************************************/
 .reveal .slide-number
 {
-	color: #3b759e;
+	color: #003050;
+	background-color: rgba(0, 0, 0, 7%);
+}
+
+/*********************************************
+ * PDF PRINTING
+ *********************************************/
+html.print-pdf body
+{
+	background: none;
+}
+html.print-pdf .speaker-notes-pdf
+{
+	background-color: #F7F7F7;
+	padding: 4px;
+}
+html.print-pdf .speaker-notes-pdf::before
+{
+	font-size: 60%;
+	margin-bottom: -8px;
+}
+html.print-pdf .speaker-notes-pdf p
+{
+	margin-bottom: 0;
+	font-size: 80%;
 }
